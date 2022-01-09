@@ -1,0 +1,68 @@
+/* pages/commentPage/index.wxss */
+page {
+  font-size: 32rpx;
+  padding-bottom: 0rpx;
+}
+
+.contentBox {
+  margin-top: 2vh;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 20rpx;
+  position: relative;
+}
+
+.imgBox {
+  width: 100%;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.descriptionText {
+  font-size: 32rpx;
+  color: #ccc;
+  margin: 20rpx 0;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.contentBox .active {
+  color: rgb(245, 180, 62);
+}
+
+.selectFileBox {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px dashed #000;
+}
+
+.selectFileBox .selectFileBtn {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.removeIcon {
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  right: 0px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  z-index: 100;
+  transform: translate(50%, -50%);
+  border-radius: 50%;
+}

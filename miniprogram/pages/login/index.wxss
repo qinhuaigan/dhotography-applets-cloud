@@ -1,0 +1,78 @@
+/* pages/login/login.wxss */
+page {
+  padding-bottom: 0;
+}
+
+.pageHead {
+  width: 120%;
+  height: 160px;
+  position: relative;
+  background-color: rgb(245, 180, 62);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  margin-left: -10%;
+  text-align: center;
+}
+
+.content {
+  padding: 0 40rpx;
+}
+
+.avatar {
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  margin: auto;
+  margin-top: 80rpx;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  border: 2px solid rgba(245, 180, 62, 0.5);
+  color: #fff;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+}
+
+.welcomeText {
+  margin-top: 30rpx;
+  color: #fff;
+}
+
+.tabs {
+  display: flex;
+  margin-top: 80rpx;
+  margin-bottom: 40rpx;
+}
+
+.tabs .tabItem {
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.tabs .active {
+  color: rgb(245, 180, 62);
+  border-bottom: 4rpx solid rgb(245, 180, 62);
+}
+
+.inputBox {
+  display: flex;
+  line-height: 60rpx;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10rpx;
+}
+
+.inputBox .inputLabel {
+  flex: 1;
+  text-align: center;
+}
+
+.inputBox input {
+  height: 30px;
+  flex: 9;
+  padding-left: 10rpx;
+}
+
+.input-placeholder {
+  font-size: 12px;
+}
+

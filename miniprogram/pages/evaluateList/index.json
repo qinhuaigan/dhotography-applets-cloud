@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-toptips": "../../components/wux-weapp/toptips/index",
+    "wux-row": "../../components/wux-weapp/row/index",
+    "wux-col": "../../components/wux-weapp/col/index",
+    "wux-rater": "../../components/wux-weapp/rater/index",
+    "wux-divider": "../../components/wux-weapp/divider/index"
+  },
+  "navigationBarTitleText": "用户评价"
+}

@@ -1,0 +1,90 @@
+<!--pages/login/login.wxml-->
+<wux-toptips id="wux-toptips" />
+<view class="pageHead">
+  <view class="avatar">
+    <wux-icon type="ios-person"></wux-icon>
+  </view>
+  <view class="welcomeText">欢迎使用</view>
+</view>
+<view class="content">
+  <view class="tabs">
+    <view class="tabItem {{tabIndex === 1 ? 'active' : ''}}" data-tab="1" bindtap="selectedTab">登陆</view>
+    <view class="tabItem {{tabIndex === 2 ? 'active' : ''}}" data-tab="2" bindtap="selectedTab">注册</view>
+  </view>
+  <!-- 登陆 -->
+  <view wx:if="{{tabIndex === 1}}">
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-phone-portrait" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入手机号" value="{{username}}" data-str="username" bindblur="updateData"
+        placeholder-class="input-placeholder" />
+    </view>
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-lock" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入密码" value="{{password}}" data-str="password" bindblur="updateData"
+        placeholder-class="input-placeholder" type="password" />
+    </view>
+    <view class="mt20px">
+      <wux-button block type="energized" bindtap="login">立即登录</wux-button>
+    </view>
+    <view class="clearfix">
+      <view class="fl">
+        <checkbox-group bindchange="isAutoLogin">
+          <label>
+            <checkbox value="true" data-str="autoLogin" checked="{{autoLogin}}"></checkbox>
+            <text class="label-1-text fz14px">自动登录</text>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class="mt20px">
+      <view class="clearfix">
+        <view class="fl w40 fz14px">快速登录/注册：</view>
+        <view class="fl w60">
+          
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 注册 -->
+  <view wx:if="{{tabIndex === 2}}">
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-phone-portrait" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入手机号" data-str="username" bindblur="updateData" placeholder-class="input-placeholder" />
+    </view>
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-mail" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入邮箱" data-str="email" bindblur="updateData" placeholder-class="input-placeholder" />
+    </view>
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-contact" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入昵称" data-str="chineseName" bindblur="updateData" placeholder-class="input-placeholder" />
+    </view>
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-lock" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入登陆密码" data-str="password" bindblur="updateData" placeholder-class="input-placeholder"
+        type="password" />
+    </view>
+    <view class="inputBox">
+      <view class="inputLabel">
+        <wux-icon type="ios-lock" size="30"></wux-icon>
+      </view>
+      <input placeholder="请输入确认密码" data-str="password2" bindblur="updateData" placeholder-class="input-placeholder"
+        type="password" />
+    </view>
+    <view class="mt20px">
+      <wux-button block type="balanced" bindtap="signUp">立即注册</wux-button>
+    </view>
+  </view>
+</view>

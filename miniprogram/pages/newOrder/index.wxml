@@ -1,0 +1,40 @@
+<!--pages/newOrder/index.wxml-->
+<wux-toptips id="wux-toptips" />
+<view class="car" wx:if="{{themeDetail}}">
+  <view class="carLeft">
+    <image src="{{baseURL}}{{themeDetail.files[0] ? themeDetail.files[0].path : ''}}" mode="widthFix"></image>
+  </view>
+  <view class="carRight">
+    <view class="carTitle overHide">{{themeDetail.title}}</view>
+    <view class="carDescription overHide">{{themeDetail.description}}</view>
+    <view class="carFooter clearfix">
+      <view class="carBottomLeft">￥{{themeDetail.priceShow}}</view>
+      <view class="carBottomRight">
+        <wux-icon type="ios-cart" size="16" color="#00a1ed"></wux-icon>
+        <text class="ml5px">到店支付</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="mt20px">
+  <view class="dataBox">
+    <wux-date-picker mode="datetime" minDate="{{minDate}}" value="{{ selectTime }}" lang="{{ lang }}" data-index="1"
+      data-mode="datetime" bind:confirm="onConfirm">
+      <wux-cell title="*预约时间" is-link extra="{{ appointmentTime }}"></wux-cell>
+    </wux-date-picker>
+    <wux-cell hover-class="none">
+      <wux-input label="*手机号" data-str="phone" controlled="{{true}}" value="{{phone}}" bind:blur="updateStr" type="number" placeholder="请输入手机号" />
+    </wux-cell>
+    <wux-cell hover-class="none">
+      <wux-input label="*姓名" data-str="customerName" controlled="{{true}}" value="{{customerName}}" bind:blur="updateStr" placeholder="请输入姓名" />
+    </wux-cell>
+    <wux-cell hover-class="none">
+      <wux-textarea label="买家留言" bind:change="updateStr" data-str="customerRemarks" maxlength="500" placeholder="留言.."
+        rows="8" hasCount="{{true}}" />
+    </wux-cell>
+  </view>
+</view>
+<view class="bottomMenu clearfix">
+  <view class="bottomMenuLeft">￥{{themeDetail.priceShow}}</view>
+  <view class="bottomMenuRightBtn" bindtap="submit">提交订单</view>
+</view>

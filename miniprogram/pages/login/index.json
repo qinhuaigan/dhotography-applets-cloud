@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../components/wux-weapp/icon/index",
+    "wux-divider": "../../components/wux-weapp/divider/index",
+    "wux-button": "../../components/wux-weapp/button/index",
+    "wux-toptips": "../../components/wux-weapp/toptips/index"
+  }
+}

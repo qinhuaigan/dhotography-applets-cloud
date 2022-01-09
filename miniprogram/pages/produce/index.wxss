@@ -1,0 +1,71 @@
+/* pages/produce/index.wxss */
+page {
+  padding-top: 80rpx;
+}
+
+.tabWarp {
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.themeCar {
+  width: 100%;
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.themeCar .carTitle {
+  font-size: 36rpx;
+  line-height: 60rpx;
+}
+
+.themeCar .carDescription {
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #888;
+}
+
+.themeCar .carFooter {
+  line-height: 60rpx;
+  margin-top: 20rpx;
+}
+
+.themeCar .carMoney {
+  color: rgb(245, 180, 62);
+}
+
+.themeCar .carFooterDes {
+  font-size: 30rpx;
+  color: #888;
+  margin-left: 20rpx;
+}
+
+.themeCar .carBtn {
+  font-size: 32rpx;
+  line-height: 60rpx;
+  padding: 0 50rpx;
+  color: #fff;
+  background-color: rgb(245, 180, 62);
+  border-radius: 60rpx;
+  vertical-align: middle;
+}
+
+.themeCar .carBottomLine {
+  height: 1px;
+  background-color: #eee;
+  margin: 20rpx 0;
+}
+
+.loadMore {
+  width: 200rpx;
+  margin: auto;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color:  rgb(245, 180, 62);
+}

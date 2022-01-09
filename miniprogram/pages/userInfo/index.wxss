@@ -1,0 +1,90 @@
+/* pages/userInfo/index.wxss */
+page {
+  background-color: #f4f4f4;
+}
+
+.pageHead {
+  width: 120%;
+  height: 160px;
+  position: relative;
+  background-color: rgb(245, 180, 62);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  margin-left: -10%;
+  text-align: center;
+}
+
+
+.avatar {
+  display: inline-block;
+  background-color: #fff;
+  margin: auto;
+  margin-top: 40rpx;
+  border-radius: 50%;
+  /* border: 2px solid rgba(245, 180, 62, 0.5); */
+  color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  padding: 0 50rpx;
+  margin-top: -80rpx;
+  z-index: 1000;
+  position: relative;
+  min-height: 500rpx;
+}
+
+.userName {
+  font-size: 32rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.box {
+  border-radius: 8rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.box .boxTitle {
+  line-height: 50rpx;
+  font-size: 32rpx;
+  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.flexBox {
+  font-size: 28rpx;
+  display: flex;
+  text-align: center;
+}
+
+.flexBox .flexItem {
+  flex: 1;
+}
+
+.menuList {
+  font-size: 32rpx;
+}
+
+.menuList .menuItem {
+  line-height: 80rpx;
+}
+
+.menuList .menuItem .myInput {
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+}
+
+.menuList .menuItem .label {
+  color: #ccc;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #eee;
+}

@@ -1,0 +1,63 @@
+<!--pages/userInfo/index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
+<view class="pageHead">
+  <view class="avatar" bindtap="uploadAvatar">
+    <wux-image mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" />
+  </view>
+  <view class="userName">点击更换头像</view>
+</view>
+<view class="content">
+  <view class="mt10px">
+    <view class="box">
+      <view class="menuList">
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl w30 label">我的昵称：</view>
+          <view class="fl w70">
+            <input class="myInput" bindblur="updateName" value="{{userInfo.nickname}}" type="text" placeholder="请输入昵称" />
+          </view>
+        </view>
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl w30 label">手机号码：</view>
+          <view class="fl w70">{{userInfo.phone}}</view>
+        </view>
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl w30 label">我的性别：</view>
+          <view class="fl w70">
+            <radio-group bindchange="updateGender">
+              <radio value="0" checked="{{userInfo.gender == 0}}" class="mr10px">男</radio>
+              <radio value="1" checked="{{userInfo.gender == 1}}" class="mr10px">女</radio>
+              <radio value="2" checked="{{userInfo.gender == 2}}">保密</radio>
+            </radio-group>
+          </view>
+        </view>
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl w30 label">所在省区：</view>
+          <view class="fl w70">
+            <picker mode="region" bindchange="bindRegionChange" value="{{userInfo.provincialArea}}" custom-item="{{customItem}}">
+              <view class="picker">{{userInfo.provincialArea[0]}}-{{userInfo.provincialArea[1]}}-{{userInfo.provincialArea[2]}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl w30 label">详细地址：</view>
+          <view class="fl w70">
+            <input class="myInput" bindblur="updateAddress" value="{{userInfo.address}}" type="text" placeholder="请输入详细地址" />
+          </view>
+        </view>
+        <view class="menuItem borderBottom clearfix">
+          <view class="fl w30 label">我的身份：</view>
+          <view class="fl w70">{{userInfo.identity}}</view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl w30 label">我的邮箱：</view>
+          <view class="fl w70">{{userInfo.email}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mt40px">
+    <wux-button block type="balanced" bindtap="saveInfo">保存</wux-button>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../components/wux-weapp/icon/index",
+    "wux-prompt": "../../components/wux-weapp/prompt/index",
+    "wux-toptips": "../../components/wux-weapp/toptips/index",
+    "wux-row": "../../components/wux-weapp/row/index",
+    "wux-col": "../../components/wux-weapp/col/index",
+    "wux-badge": "../../components/wux-weapp/badge/index",
+    "wux-rater": "../../components/wux-weapp/rater/index",
+    "wux-divider": "../../components/wux-weapp/divider/index"
+  },
+  "navigationBarTitleText": "服务详情"
+}

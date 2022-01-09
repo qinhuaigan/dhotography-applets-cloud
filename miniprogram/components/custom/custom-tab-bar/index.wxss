@@ -1,0 +1,26 @@
+/* custom-tab-bar/index.wxss */
+.tabBarList {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  color: #80848f;
+  background-color: #fff;
+  z-index: 10000;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #e8e8e8;
+  box-sizing: border-box;
+}
+.tabBarList .tabBarItem {
+  flex: 1;
+  padding: 10rpx 0;
+}
+
+.tabBarList .active {
+  color: rgb(245, 180, 62);
+}
+
+.tabBarList .tabBarItem .tabBarItemText {
+  font-size: 28rpx;
+}

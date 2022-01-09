@@ -1,0 +1,1 @@
+"D:\Program Files\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud-demo-5geulu1891c26672 --n quickstartFunctions --r --project "E:\小程序\云开发小程序\clond2" --report_first --report

@@ -1,0 +1,25 @@
+<!--pages/produce/index.wxml-->
+<view class="tabWarp">
+  <wux-tabs bindchange="change">
+    <wux-tab key="{{item.value}}" title="{{item.label}}" wx:for="{{tabs}}" wx:key="value"></wux-tab>
+  </wux-tabs>
+</view>
+<view class="mt20px">
+  <view class="themeCar" data-theme="{{item}}" wx:for="{{themeData}}" wx:key="id" bindtap="gotoDetailPage">
+    <image mode="widthFix" src="{{baseURL}}{{item.files[0] ? item.files[0].path : null}}"></image>
+    <view class="carTitle">{{item.title}}</view>
+    <view class="carDescription">{{item.description}}</view>
+    <view class="carFooter clearfix">
+      <view class="carMoney fl">￥{{item.totalMoney}}</view>
+      <view class="carFooterDes fl">已预约：{{item.num || 0}} 剩余：{{item.total - (item.num || 0)}}</view>
+      <view class="fr" data-theme="{{item}}" catchtap="gotoOrderPage">
+        <view class="carBtn">立即预约</view>
+      </view>
+    </view>
+    <wux-divider wx:if="{{index < themeData.length - 1}}" show-text="{{ false }}" dashed />
+  </view>
+</view>
+<view class="loadMore" bindtap="nextPage" wx:if="{{themeData.length < total}}">加载更多</view>
+<wux-divider wx:if="{{themeData.length >= total}}" dashed><text style="color: #e8e8e8;">到底了</text></wux-divider>
+<!-- 底部导航栏 -->
+<tabBar></tabBar>

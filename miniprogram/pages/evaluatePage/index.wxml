@@ -1,0 +1,78 @@
+<!--pages/commentPage/index.wxml-->
+<!-- 顶部消息提示 -->
+<wux-toptips id="wux-toptips" />
+<view class="contain">
+  <view class="contentBox">
+    <wux-row gutter="10">
+      <wux-col span="3">
+        <view class="imgBox"
+          style="background-image: url('{{orderInfo.themeInfo.files[0] ? orderInfo.themeInfo.files[0].path : ''}}')">
+        </view>
+      </wux-col>
+      <wux-col span="9">
+        <view class="overHide fz16px">{{orderInfo.themeInfo.title}}</view>
+        <view class="descriptionText">{{orderInfo.themeInfo.description}}</view>
+        <view class="warnColor fz14px">￥{{orderInfo.themeInfo.price}}</view>
+      </wux-col>
+    </wux-row>
+    <view class="mt10px lineHeight32px">
+      <wux-row>
+        <wux-col span="3">描述相符</wux-col>
+        <wux-col span="3" wx:for="{{evaluateList}}" wx:key="index">
+          <view data-type="{{item.value}}" class="{{evaluateInfo.evalueteType == item.value ? 'active' : ''}}"
+            bindtap="selectEvaluateType">
+            <wux-icon size="20" type="ios-rose" />
+            <text class="ml5px">{{item.label}}</text>
+          </view>
+        </wux-col>
+      </wux-row>
+    </view>
+    <view class="mt10px">
+      <wux-textarea rows="{{6}}" maxlength="-1" data-str="remark" bindblur="levelChange"
+        placeholder="从多角度评价服务，可以帮助更多有需要的人" />
+    </view>
+    <view class="">
+      <wux-row gutter="15">
+        <wux-col span="3" wx:for="{{fileList}}" wx:key="index">
+          <view class="imgBox {{index > 3 ? 'mt10px' : ''}} " style="background-image: url('{{item}}')">
+            <view class="removeIcon" data-index="{{index}}" bindtap="removeFile">
+              <wux-icon size="20" type="ios-close" />
+            </view>
+          </view>
+        </wux-col>
+        <wux-col span="3">
+          <view class="selectFileBox {{fileList.length > 3 ? 'mt10px' : ''}}" bindtap="chooseFile">
+            <view class="selectFileBtn">
+              <wux-icon size="40" type="ios-add" />
+            </view>
+          </view>
+        </wux-col>
+      </wux-row>
+    </view>
+    <view class="mt10px">
+      <checkbox-group data-str="isPublic" bindchange="publichChange">
+        <checkbox value="{{true}}" checked="{{evaluateInfo.isPublic}}">
+          <text>公开</text>
+          <text style="color: #ccc;">（公开头像昵称信息）</text>
+        </checkbox>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="contentBox">
+    <view style="color: #ccc;">服务评分</view>
+    <wux-cell title="描述相符" hover-class="none">
+      <wux-rater slot="footer" max="5" data-str="accordLevel" bindchange="levelChange"
+        defaultValue="{{ evaluateInfo.accordLevel }}" />
+    </wux-cell>
+    <wux-cell title="拍摄质量" hover-class="none">
+      <wux-rater slot="footer" max="5" data-str="qualityLevel" bindchange="levelChange"
+        defaultValue="{{ evaluateInfo.serviceLevel }}" />
+    </wux-cell>
+    <wux-cell title="服务态度" hover-class="none">
+      <wux-rater slot="footer" max="5" data-str="attitudeLevel" bindchange="levelChange"
+        defaultValue="{{ evaluateInfo.serviceLevel }}" />
+    </wux-cell>
+  </view>
+  <wux-button block class="mt20px" disabled="{{disabledBtn}}" bindtap="submitEvaluate" type="energized" class="w100">
+    立即发布</wux-button>
+</view>

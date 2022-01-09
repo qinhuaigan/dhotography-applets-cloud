@@ -1,0 +1,455 @@
+/**app.wxss**/
+/**app.wxss**/
+@import './css/animate.wxss';
+
+page {
+  color: rgb(53, 53, 53);
+  padding-bottom: 140rpx;
+  background-color: #f4f4f4;
+}
+
+
+view {
+  animation-delay: 1s;
+}
+
+image {
+  width: 100%;
+  animation-delay: 1s;
+  display: block;
+}
+
+.pageContent {
+  padding: 0 40rpx;
+}
+
+.margin0px {
+  margin: 0 !important;
+}
+
+.padding0px {
+  padding: 0 !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+/* 清除浮动 */
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+}
+
+.clearfix {
+  /* 为了照顾ie6浏览器*/
+  zoom: 1;
+}
+
+.ml5px {
+  margin-left: 10rpx !important;
+}
+
+.ml10px {
+  margin-left: 20rpx !important;
+}
+
+.ml15px {
+  margin-left: 30rpx !important;
+}
+
+.ml20px {
+  margin-left: 40rpx !important;
+}
+
+.mr5px {
+  margin-right: 10rpx !important;
+}
+
+.mr10px {
+  margin-right: 20rpx !important;
+}
+
+.mr15px {
+  margin-right: 30rpx !important;
+}
+
+.mr20px {
+  margin-right: 40rpx !important;
+}
+
+.mr40px {
+  margin-right: 80rpx !important;
+}
+
+.mt5px {
+  margin-top: 10rpx !important;
+}
+
+.mt10px {
+  margin-top: 20rpx !important;
+}
+
+.mt15px {
+  margin-top: 30rpx !important;
+}
+
+.mt20px {
+  margin-top: 40rpx !important;
+}
+
+.mt40px {
+  margin-top: 40px !important;
+}
+
+.mt50px {
+  margin-top: 100rpx !important;
+}
+
+.mt140px {
+  margin-top: 280rpx !important;
+}
+
+.mt28px {
+  margin-top: 56rpx !important;
+}
+
+.mb5px {
+  margin-bottom: 10rpx !important;
+}
+
+.mb10px {
+  margin-bottom: 20rpx !important;
+}
+
+.mb15px {
+  margin-bottom: 30rpx !important;
+}
+
+.mb10px {
+  margin-bottom: 20rpx !important;
+}
+
+.mb20px {
+  margin-bottom: 40rpx !important;
+}
+
+.ml20px {
+  margin-left: 40rpx !important;
+}
+
+.ml40px {
+  margin-left: 80rpx !important;
+}
+
+.fz12px {
+  font-size: 24rpx !important;
+}
+
+.fz14px {
+  font-size: 28rpx !important;
+}
+
+.fz16px {
+  font-size: 32rpx !important;
+}
+
+.fz18px {
+  font-size: 36rpx !important;
+}
+
+.fz20px {
+  font-size: 40rpx !important;
+}
+
+.fz22px {
+  font-size: 44rpx !important;
+}
+
+.fz24px {
+  font-size: 48rpx !important;
+}
+
+.fz26px {
+  font-size: 52rpx !important;
+}
+
+.fz30px {
+  font-size: 60rpx !important;
+}
+
+.fz32px {
+  font-size: 64rpx !important;
+}
+
+.fz34px {
+  font-size: 68rpx !important;
+}
+
+.fz36px {
+  font-size: 72rpx !important;
+}
+
+.fz38px {
+  font-size: 76rpx !important;
+}
+
+.fz40px {
+  font-size: 80rpx !important;
+}
+
+.w5 {
+  width: 5% !important;
+}
+
+.w10 {
+  width: 10% !important;
+}
+
+.w15 {
+  width: 15% !important;
+}
+
+.w20 {
+  width: 20% !important;
+}
+
+.w25 {
+  width: 25% !important;
+}
+
+.w30 {
+  width: 30% !important;
+}
+
+.w35 {
+  width: 35% !important;
+}
+
+.w40 {
+  width: 40% !important;
+}
+
+.w45 {
+  width: 45% !important;
+}
+
+.w50 {
+  width: 50% !important;
+}
+
+.w55 {
+  width: 55% !important;
+}
+
+.w60 {
+  width: 60% !important;
+}
+
+.w65 {
+  width: 65% !important;
+}
+
+.w70 {
+  width: 70% !important;
+}
+
+.w75 {
+  width: 75% !important;
+}
+
+.w80 {
+  width: 80% !important;
+}
+
+.w85 {
+  width: 85% !important;
+}
+
+.w90 {
+  width: 90% !important;
+}
+
+.w95 {
+  width: 95% !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.lineHeight28px {
+  line-height: 56rpx !important;
+}
+
+.lineHeight32px {
+  line-height: 64rpx !important;
+}
+
+.warnColor {
+  color: #E6A23C;
+}
+
+.successColor {
+  color: #67C23A;
+}
+
+.invalidColor {
+  color: #ccc;
+}
+
+.failColor {
+  color: #F56C6C;
+}
+
+.pageWrap {
+  position: relative;
+  min-height: 100rpx;
+  background: #fff;
+  padding: 40rpx 100rpx;
+}
+
+/* 文字超出部分显示省略号 */
+.overHide {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textContent {
+  text-indent: 64rpx;
+  line-height: 50rpx;
+}
+
+.pageBody {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('https://res1.eqh5.com/Fs12tnkYu9QXCOMBPPSOdIU78XZV?imageMogr2/auto-orient/thumbnail/1048x1578%3E/format/webp');
+  background-size: cover;
+  padding-bottom: 100rpx;
+}
+
+.imgTitle {
+  background-color: cornflowerblue;
+  padding: 10rpx 40rpx;
+  display: inline-block;
+  color: #fff;
+}
+
+.footerText {
+  padding: 20rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 20rpx 0;
+  color: #fff;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.detailTitle {
+  font-weight: bold;
+  color: cornflowerblue;
+  margin: 20rpx 0
+}
+
+.prevPage {
+  display: inline-block;
+  padding: 25rpx 20rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: fixed;
+  left: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  animation-delay: 0;
+  animation: showAnimate 3s;
+  animation-iteration-count: infinite;
+  z-index: 10;
+}
+
+.nextPage {
+  display: inline-block;
+  padding: 25rpx 20rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: fixed;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  animation-delay: 0;
+  animation: showAnimate 3s;
+  animation-iteration-count: infinite;
+  z-index: 10;
+}
+
+@keyframes showAnimate {
+  0% {
+    opacity: 0
+  }
+
+  48% {
+    opacity: 1
+  }
+
+  52% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0
+  }
+}
+
+.gotoMapBtn {
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 50%;
+  background-color: cornflowerblue;
+  position: fixed;
+  bottom: 60rpx;
+  right: 40rpx;
+  z-index: 1000;
+  line-height: 120rpx;
+  box-shadow: 0 0 2px 2px rgba(143, 186, 250, 0.1);
+}
+
+.gotoMapBtn .gotoMapBtntext {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: initial;
+}
+
+.contain {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  padding: 0 30rpx;
+}

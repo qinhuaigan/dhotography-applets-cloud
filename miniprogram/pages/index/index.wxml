@@ -1,0 +1,49 @@
+<!--index.wxml-->
+<view>
+  <view class="carouselBox">
+    <swiper class="carouselSwiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+      duration="{{duration}}">
+      <block wx:for="{{carouselList}}" wx:key="filePath">
+        <swiper-item>
+          <wux-image mode="aspectFill" wux-class="image" height="180px" width="100%" error="图片加载失败" empty="图片不存在" src="{{item.filePath}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="contentBox">
+    <view class="boxTitle">
+      <view class="titleImg" style="background-image: url('{{titleIcon}}')"></view>
+      <view class="titleText">服务内容</view>
+    </view>
+    <view class="tabList">
+      <view class="tabItem" wx:for="{{tabsData}}" wx:key="value">
+        <navigator open-type="reLaunch" url="../produce/index?series={{item.value}}">
+          <view class="typeImg">
+            <wux-image class="iconBox" mode="aspectFill" wux-class="image" shape="circle" height="100%" width="100%" error="图片加载失败" empty="图片不存在" src="{{item.path}}" />
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="contentBox">
+    <view class="boxTitle">
+      <wux-divider>
+        <view class="boxTitleText">今日推荐</view>
+      </wux-divider>
+    </view>
+    <view class="dividerWrap">
+      <wux-divider show-text="{{ false }}" />
+    </view>
+    <view class="themeList clearfix">
+      <view class="themeCar w100 mb20px" wx:for="{{themeData}}" wx:key="path" data-theme="{{item}}" bindtap="gotoDetailPage">
+        <wux-image mode="aspectFill" wux-class="image" height="400rpx" width="100%" error="图片加载失败" empty="图片不存在" src="{{item.files[0] ? item.files[0].path : ''}}" />
+      </view>
+    </view>
+  </view>
+  <view class="contentBox">
+    <image class="mt10px" mode="widthFix" wx:for="{{scienceImgs}}" src="{{item.path}}" wx:key="path"></image>
+    <view class="mt10px mb10px">环境展示</view>
+  </view>
+  <!-- 底部导航栏 -->
+  <tabBar></tabBar>
+</view>

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../components/wux-weapp/icon/index",
+    "wux-button": "../../components/wux-weapp/button/index",
+    "wux-row": "../../components/wux-weapp/row/index",
+    "wux-col": "../../components/wux-weapp/col/index",
+    "wux-toptips": "../../components/wux-weapp/toptips/index",
+    "wux-divider": "../../components/wux-weapp/divider/index",
+    "wux-badge": "../../components/wux-weapp/badge/index"
+  },
+  "navigationBarTitleText": "我的消息"
+}

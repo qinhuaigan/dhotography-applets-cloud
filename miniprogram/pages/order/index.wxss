@@ -1,0 +1,72 @@
+/* pages/order/index.wxss */
+.tabWarp {
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.imgBox {
+  width: 100%;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.orderList {
+  margin-top: 120rpx;
+}
+
+.orderList .orderItem {
+  margin: 30rpx 0;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  background-color: #fff;
+}
+
+.orderItem .orderTitle {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+.descriptionText {
+  font-size: 28rpx;
+  color: #ccc;
+  margin: 20rpx 0;
+}
+
+.btnBox {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1px solid #eee;
+}
+
+.cancelBtn {
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  border: 1px solid #eee;
+  display: inline-block;
+  border-radius: 10rpx;
+}
+
+.empty {
+  padding: 100rpx;
+  /* background-color: #fff; */
+  margin-top: 400rpx;
+  text-align: center;
+  color: #ccc;
+  display: inline-block;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  margin-left: 50%;
+  margin-top: 50%;
+}
+
+.empty .emptyText {
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}

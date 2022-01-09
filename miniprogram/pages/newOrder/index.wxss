@@ -1,0 +1,99 @@
+/* pages/newOrder/index.wxss */
+page {
+  background-color: #f4f4f4;
+  padding-bottom: 140rpx;
+}
+
+.bottomMenu {
+  width: 100%;
+  /* height: 100rpx; */
+  box-sizing: border-box;
+  padding: 10rpx 30rpx;
+  line-height: 120rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px 2px #eee;
+}
+
+.bottomMenu .bottomMenuLeft {
+  height: 100rpx;
+  line-height: 100rpx;
+  float: left;
+  width: 30%;
+  text-align: center;
+  font-size: 32rpx;
+  vertical-align: middle;
+  color: rgb(245, 180, 62);
+}
+
+
+.bottomMenu .bottomMenuRightBtn {
+  float: left;
+  box-sizing: border-box;
+  width: 70%;
+  /* display: inline-block; */
+  background-color: rgb(245, 180, 62);
+  line-height: 80rpx;
+  vertical-align: middle;
+  padding: 0 40rpx;
+  text-align: center;
+  border-radius: 80rpx;
+  color: #fff;
+  margin-top: 10rpx;
+  font-size: 34rpx;
+}
+
+.car {
+  width: 100%;
+  display: flex;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.car .carLeft {
+  width: 30%;
+}
+
+.car .carRight {
+  width: 70%;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.car .carTitle {
+  font-size: 36rpx;
+}
+
+.car .carDescription {
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #888;
+}
+
+.carFooter {
+  line-height: 60rpx;
+}
+
+.carBottomLeft {
+  float: left;
+  color: rgb(245, 180, 62);
+  font-size: 32rpx;
+}
+
+.carBottomRight {
+  float: right;
+  font-size: 30rpx;
+}
+
+.box {
+  padding: 20rpx 30rpx;
+  background-color: #fff; 
+}
+
+.dataBox {
+  background-color: #fff;
+}

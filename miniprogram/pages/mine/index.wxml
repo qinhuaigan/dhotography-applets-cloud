@@ -1,0 +1,132 @@
+<!--pages/mine/index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
+<view class="pageHead">
+  <view class="avatar" bindtap="uploadAvatar">
+    <wux-image mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" />
+  </view>
+  <navigator wx:if="{{!userInfo}}" open-type="reLaunch" url="../login/index">
+    <view class="userName">请点击登录</view>
+  </navigator>
+  <view wx:if="{{userInfo}}" class="userName">{{userInfo.nickname}}</view>
+</view>
+<view class="content">
+  <view class="box">
+    <navigator url="../order/index?status=null">
+      <view class="boxTitle clearfix">
+        <view class="fl">所有订单</view>
+        <view class="fr">
+          <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+        </view>
+      </view>
+    </navigator>
+    <view class="flexBox">
+      <view class="flexItem">
+        <wux-badge count="{{orderCount.isAppointment}}">
+          <navigator url="../order/index?status=0">
+            <wux-icon type="ios-alarm" size="26" color="rgb(245, 180, 62)"></wux-icon>
+            <view>预约中</view>
+          </navigator>
+        </wux-badge>
+
+      </view>
+      <view class="flexItem">
+        <wux-badge count="{{orderCount.isHand}}">
+          <navigator url="../order/index?status=1">
+            <wux-icon type="ios-clock" size="26" color="rgb(245, 180, 62)"></wux-icon>
+            <view>进行中</view>
+          </navigator>
+        </wux-badge>
+      </view>
+      <view class="flexItem">
+        <navigator url="../order/index?status=2">
+          <wux-icon type="ios-checkmark-circle" size="26" color="rgb(245, 180, 62)"></wux-icon>
+          <view>已完成</view>
+        </navigator>
+      </view>
+      <view class="flexItem">
+        <navigator url="../order/index?status=-1">
+          <wux-icon type="ios-archive" size="26" color="rgb(245, 180, 62)"></wux-icon>
+          <view>已取消</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="mt10px">
+    <view class="box">
+      <view class="menuList">
+        <navigator url="../message/index">
+          <view class="menuItem borderBottom clearfix">
+            <wux-badge count="{{unreadMsgNum}}">
+              <view class="fl mr10px">最新消息</view>
+            </wux-badge>
+            <view class="fr">
+              <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="../subscribeMsg/index">
+          <view class="menuItem borderBottom clearfix">
+            <wux-badge count="{{subscribeMsgNum}}">
+              <view class="fl mr10px">我的订阅</view>
+            </wux-badge>
+            <view class="fr">
+              <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="../userInfo/index">
+          <view class="menuItem clearfix">
+          <view class="fl">我的信息</view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="mt10px">
+    <view class="box">
+      <view class="menuList">
+        <!-- <navigator url="../mapPage/mapPage?lng=109.422046&lat=24.281037"> -->
+          <view class="menuItem clearfix" bindtap="openMap">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-pin"></wux-icon>
+            <text class="ml5px">广西省柳州市城中区</text>
+          </view>
+          <view class="fr">
+            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+          </view>
+        </view>
+        <!-- </navigator> -->
+        <view class="menuItem clearfix" data-phone="1300000000" bindtap="call">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-call"></wux-icon>
+            <text class="ml5px">1300000000</text>
+          </view>
+          <view class="fr">
+            <!-- <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon> -->
+          </view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-alarm"></wux-icon>
+            <text class="ml5px">周一至周五09:00-18:00</text>
+          </view>
+        </view>
+        <view class="menuItem clearfix">
+          <view class="fl">
+            <wux-icon color="#d7d7d7" size="16" type="ios-home"></wux-icon>
+            <text class="ml5px">欢迎来到星缘摄影工作室</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mt20px">
+    <wux-button block type="assertive" bindtap="loginOut">退出登陆</wux-button>
+  </view>
+</view>
+<!-- 底部导航栏 -->
+<tabBar></tabBar>

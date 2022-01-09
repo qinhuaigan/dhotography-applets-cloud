@@ -1,0 +1,111 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.carouselSwiper {
+  height: 180px;
+}
+
+.carouselImg {
+  height: 180px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contentBox {
+  padding: 20rpx 40rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+}
+
+.boxTitle {
+  width: 350rpx;
+  margin: auto;
+  text-align: center;
+  font-size: 36rpx;
+}
+
+.titleText {
+  margin-top: 20rpx;
+}
+
+.titleImg {
+  display: inline-block;
+  width: 120rpx;
+  height: 60rpx;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.tabList {
+  display: flex;
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.tabList .tabItem {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.tabList .tabItem .typeImg {
+  width: 100%;
+  padding-top: 100%;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+}
+
+.tabList .tabItem .tabText {
+  font-size: 32rpx;
+}
+
+.dividerWrap {
+  margin: 0 -40rpx;
+}
+
+.boxTitleText {
+  font-size: 36rpx;
+}
+
+.themeList .themeCar {
+  width: 300rpx;
+  float: left;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+}
+
+.themeList .themeCar .carImg {
+  height: 200rpx;
+  background-size: cover;
+  background-position: center;
+}
+
+.iconBox {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

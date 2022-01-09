@@ -1,0 +1,51 @@
+/* pages/message/index.wxss */
+.imgBox {
+  width: 100%;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.orderList .orderItem {
+  width: 100%;
+  margin: 30rpx 0;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  background-color: #fff;
+  position: relative;
+}
+
+.orderList .orderItem .wux-badge {
+  display: block;
+}
+
+.orderItem .orderTitle {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+.descriptionText {
+  font-size: 28rpx;
+  color: #ccc;
+  margin: 20rpx 0;
+}
+
+.empty {
+  padding: 100rpx;
+  /* background-color: #fff; */
+  margin-top: 400rpx;
+  text-align: center;
+  color: #ccc;
+  display: inline-block;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  margin-left: 50%;
+  margin-top: 50%;
+}
+
+.empty .emptyText {
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,38 @@
+<!--pages/subscribeMsg/index.wxml-->
+<view class="orderList">
+  <view class="empty" wx:if="{{!messageList || messageList.length === 0}}">
+    <wux-icon type="ios-paper" size="40" />
+    <view class="emptyText">暂无消息数据</view>
+  </view>
+  <view class="contain orderItem" wx:for="{{messageList}}" data-id="{{item.id}}" data-msgType="{{item.msgType}}"
+    data-themeId="{{item.themeId}}" data-orderId="{{item.orderId}}" wx:key="id" bindtap="gotoDetail">
+    <view class="orderContent">
+      <wux-row>
+        <wux-col span="8">
+          <view class="fz16px">订单号：{{item.orderInfo ? item.orderInfo.themeNo : ''}}</view>
+        </wux-col>
+        <wux-col span="4">
+          <view class="text-right fz14px {{item.orderInfo ? statusColorMap[item.orderInfo.status] : ''}}">{{statusMap[item.orderInfo ? item.orderInfo.status : null]}}</view>
+        </wux-col>
+      </wux-row>
+      <wux-divider showText="{{ false }}"></wux-divider>
+      <wux-badge dot="{{ true }}" wx:if="{{item.status === 0}}"></wux-badge>
+      <wux-row gutter="10">
+        <wux-col span="3">
+          <view class="imgBox"
+            style="background-image: url({{item.themeInfo.files[0] ? item.themeInfo.files[0].path : ''}})"></view>
+        </wux-col>
+        <wux-col span="9">
+          <view class="overHide fz16px">{{item.themeInfo.title}}</view>
+          <view class="descriptionText">{{item.themeInfo.description}}</view>
+          <view class="warnColor fz14px">￥{{item.themeInfo.price}}</view>
+        </wux-col>
+      </wux-row>
+      <wux-divider showText="{{ false }}"></wux-divider>
+    <view class="fz14px">下单时间：{{item.orderInfo.createTime}}</view>
+    </view>
+  </view>
+  <wux-divider wx:if="{{currentPage >= total && messageList.length > 0}}">
+    <text class="text invalidColor">到底了</text>
+  </wux-divider>
+</view>

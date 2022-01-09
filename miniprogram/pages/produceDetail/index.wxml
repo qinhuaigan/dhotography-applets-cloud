@@ -1,0 +1,118 @@
+<!--pages/produceDetail/index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
+<view class="mt20px">
+  <view class="themeCar" wx:if="{{themeDetail}}">
+    <swiper class="carouselSwiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
+      <block wx:for="{{themeDetail.files}}" wx:key="path">
+        <swiper-item>
+          <view class="carouselImg" style="background-image: url('{{baseURL}}{{item.path}}')"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="carTitle">{{themeDetail.title}}</view>
+    <view class="carDescription">{{themeDetail.description}}</view>
+    <view class="carFooter clearfix">
+      <view class="carMoney fl">￥{{themeDetail.totalMoney}}</view>
+      <view class="carFooterDes fl">已预约：{{themeDetail.num || 0}} 剩余：{{themeDetail.total - (themeDetail.num || 0)}}
+      </view>
+    </view>
+  </view>
+  <view class="mt20px">
+    <view class="themeCar">
+      <view class="detailTitle">
+        <view class="detailTitleText">服务详情</view>
+        <view class="detailTitleLine"></view>
+        <view class="textarea" wx:if="{{themeDetail.detail}}">{{themeDetail.detail || ''}}</view>
+        <view class="empty" wx:if="{{!themeDetail.detail}}">暂无内容</view>
+      </view>
+    </view>
+  </view>
+  <view class="mt20px">
+    <view class="themeCar">
+      <view class="detailTitle">
+        <view class="clearfix">
+          <view class="fl">
+            <wux-badge overflowCount="999" count="{{totalEvaluete}}">
+              <view class="detailTitleText fl">用户评价</view>
+            </wux-badge>
+          </view>
+          <view class="fr" wx:if="{{totalEvaluete > 0}}">
+            <navigator url="../evaluateList/index?id={{themeDetail.id}}">
+              <text class="moreEvaluate">查看全部</text>
+            </navigator>
+          </view>
+        </view>
+        <view class="detailTitleLine"></view>
+      </view>
+      <view class="evaluateContent">
+        <view class="evaluateTabList" wx:if="{{evaluateStatistics}}">
+          <view class="evaluateTab">好评({{evaluateStatistics.good}})</view>
+          <view class="evaluateTab">中评({{evaluateStatistics.middle}})</view>
+          <view class="evaluateTab">差评({{evaluateStatistics.bad}})</view>
+        </view>
+        <view class="userEvaluateList mt20px">
+          <view class="userEvaluateListItem" wx:for="{{evaluateList}}" wx:key="id">
+            <view class="userInfo">
+              <wux-row gutter="10">
+                <wux-col span="2">
+                  <view class="userAvatar" style="background-image: url('{{item.avatar}}')"></view>
+                </wux-col>
+                <wux-col span="10">
+                  <view class="clearfix">
+                    <view class="w70 fl">
+                      <view>{{item.chineseName}}</view>
+                      <view class="evaluateTime">{{item.createTime}} {{item.type == 2 ? '追评' : '评价'}}</view>
+                    </view>
+                  </view>
+                </wux-col>
+              </wux-row>
+            </view>
+            <view class="mt20px lineHeight28px">
+              <view class="clearfix">
+                <text class="fl fz14px">描述相符：</text>
+                <view class="fl">
+                  <wux-rater max="5" fontSize="14" disabled="{{true}}" defaultValue="{{ item.accordLevel }}" />
+                </view>
+              </view>
+              <view class="clearfix">
+                <text class="fl fz14px">拍摄质量：</text>
+                <view class="fl">
+                  <wux-rater max="5" fontSize="14" disabled="{{true}}" defaultValue="{{ item.qualityLevel }}" />
+                </view>
+              </view>
+              <view class="clearfix">
+                <text class="fl fz14px">服务态度：</text>
+                <view class="fl">
+                  <wux-rater max="5" fontSize="14" disabled="{{true}}" defaultValue="{{ item.attitudeLevel }}" />
+                </view>
+              </view>
+            </view>
+            <view wx:if="{{item.imgs.length > 0}}" class="evaluaImgList mt20px">
+              <wux-row gutter="15">
+                <wux-col span="3" wx:for="{{item.imgs}}" wx:for-index="ids" wx:for-item="img" wx:key="ids">
+                  <view bindtap="showBigImg" class="evaluaImgItem" data-current="{{img.path}}" data-index="{{index}}"
+                    style="background-image: url('{{img.path}}')"></view>
+                </wux-col>
+              </wux-row>
+            </view>
+            <view class="evalueText {{!item.remark ? 'invalidColor' : ''}}">{{item.remark || '这家伙很懒，什么也没有留下！'}}</view>
+            <wux-divider wx:if="{{index < evaluateList.length - 1 }}" dashed="{{true}}" show-text="{{ false }}" />
+          </view>
+        </view>
+        <view class="empty" wx:if="{{evaluateList.length === 0}}">暂无用户评价</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottomMenu clearfix">
+    <view class="bottomMenuLeft">
+      <view class="leftBtn" bindtap="call">
+        <wux-icon type="ios-call" size="26"></wux-icon>
+        <view>电话</view>
+      </view>
+    </view>
+    <navigator url="../newOrder/index?id={{themeDetail.id}}">
+      <view class="bottomMenuRightBtn">立即预约</view>
+    </navigator>
+  </view>
+</view>

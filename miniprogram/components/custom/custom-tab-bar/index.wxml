@@ -1,0 +1,7 @@
+<!--custom-tab-bar/index.wxml-->
+<view class="tabBarList">
+  <view class="tabBarItem {{active == index ? 'active' : ''}}" data-path="{{item.path}}" wx:for="{{tabs}}" bindtap="tabChange" wx:key="text">
+    <wux-icon size="26" type="{{item.icon}}"></wux-icon>
+    <view class="tabBarItemText">{{item.text}}</view>
+  </view>
+</view>

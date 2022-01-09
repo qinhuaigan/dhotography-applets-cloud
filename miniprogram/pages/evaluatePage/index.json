@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../components/wux-weapp/icon/index",
+    "wux-button": "../../components/wux-weapp/button/index",
+    "wux-row": "../../components/wux-weapp/row/index",
+    "wux-col": "../../components/wux-weapp/col/index",
+    "wux-toptips": "../../components/wux-weapp/toptips/index",
+    "wux-textarea": "../../components/wux-weapp/textarea/index",
+    "wux-checkbox": "../../components/wux-weapp/checkbox/index",
+    "wux-rater": "../../components/wux-weapp/rater/index",
+    "wux-cell": "../../components/wux-weapp/cell/index"
+  },
+  "navigationBarTitleText": "发表评价"
+}

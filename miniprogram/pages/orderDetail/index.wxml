@@ -1,0 +1,37 @@
+<!--pages/orderDetail/index.wxml-->
+<view class="contain">
+  <!-- 消息提示 -->
+  <wux-toptips id="wux-toptips" />
+  <view class="contentBox">
+    <wux-row gutter="10">
+      <wux-col span="4">
+        <view class="imgBox"
+          style="background-image: url('{{orderInfo.themeInfo.files[0] ? orderInfo.themeInfo.files[0].path : ''}}')">
+        </view>
+      </wux-col>
+      <wux-col span="8">
+        <view class="overHide fz18px">{{orderInfo.themeInfo.title}}</view>
+        <view class="descriptionText fz14px">{{orderInfo.themeInfo.description}}</view>
+        <view class="warnColor fz14px">￥{{orderInfo.themeInfo.price}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-divider show-text="{{ false }}" dashed />
+    <view class="title">预约信息</view>
+    <view class="descriptionText">预约客户：{{orderInfo.customerName}}</view>
+    <view class="descriptionText">预约时间：{{orderInfo.appointmentTime}}</view>
+    <view class="descriptionText">客户备注：{{orderInfo.customerRemarks || ''}}</view>
+    <wux-divider show-text="{{ false }}" dashed />
+    <view class="title">订单信息</view>
+    <view class="descriptionText">订单编号：{{orderInfo.customerName}}</view>
+    <view class="descriptionText">下单时间：{{orderInfo.createTime}}</view>
+    <view class="descriptionText">订单状态：<text
+        class="{{statusColorMap[orderInfo.status]}}">{{statusMap[orderInfo.status]}}</text></view>
+    <view class="descriptionText" wx:if="{{orderInfo.status == -2}}">客户说明：{{orderInfo.customerCancelRemarks || ''}}
+    </view>
+    <view class="descriptionText" wx:if="{{orderInfo.status == -1}}">商家说明：{{orderInfo.businessRemarks || ''}}</view>
+    <view class="btnBox">
+      <view class="btn" bindtap="goMapPage">查看地址</view>
+      <view class="btn" bindtap="call">联系我们</view>
+    </view>
+  </view>
+</view>
