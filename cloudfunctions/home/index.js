@@ -9,6 +9,7 @@ const db = cloud.database({ // 云环境数据库
 })
 const _ = db.command // 查询指令
 const Carousel = db.collection('Carousel') // Carousel 表
+const Theme = db.collection('Theme') // Carousel 表
 const Token = db.collection('Token') // Token 表
 
 // 云函数入口函数
@@ -43,19 +44,19 @@ function checkToken(token) {
 }
 
 const Api = {
-  getCarousel: async () => {
+  getCarousel: async (event, context) => {
     const result = await new Promise((resolve) => {
       Carousel.where({
-        type: "1"
-      })
-      .orderBy('sort', 'desc')
-      .get().then((res) => {
-        if (res.data) {
-          resolve(res.data)
-        } else {
-          resolve(false)
-        }
-      }).catch(() => {})
+          type: event.type || '1'
+        })
+        .orderBy('sort', 'desc')
+        .get().then((res) => {
+          if (res.data) {
+            resolve(res.data)
+          } else {
+            resolve(false)
+          }
+        }).catch(() => {})
     })
     if (!result) {
       return {
@@ -68,5 +69,26 @@ const Api = {
       code: 0,
       data: result
     }
+  },
+  // 获取 "今日推荐" 数据
+  getIsRecommend: async (event, context) => {
+    console.log('查询今日推荐')
+    const result = await new Promise((resolve) => {
+      Theme.where({
+        isRecommend: true
+      }).get().then((res) => {
+        resolve(res.data)
+      }).catch((err) => {
+        resolve(false)
+      })
+    })
+
+    if (result) {
+      return {
+        code: 0,
+        data: result
+      }
+    }
+    console.log('result ===', result)
   }
 }

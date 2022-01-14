@@ -36,12 +36,12 @@
     </view>
     <view class="themeList clearfix">
       <view class="themeCar w100 mb20px" wx:for="{{themeData}}" wx:key="path" data-theme="{{item}}" bindtap="gotoDetailPage">
-        <wux-image mode="aspectFill" wux-class="image" height="400rpx" width="100%" error="图片加载失败" empty="图片不存在" src="{{item.files[0] ? item.files[0].path : ''}}" />
+        <wux-image mode="aspectFill" wux-class="image" height="400rpx" width="100%" error="图片加载失败" empty="图片不存在" src="{{item.fileList[0] ? item.fileList[0].filePath : ''}}" />
       </view>
     </view>
   </view>
   <view class="contentBox">
-    <image class="mt10px" mode="widthFix" wx:for="{{scienceImgs}}" src="{{item.path}}" wx:key="path"></image>
+    <image class="mt10px" mode="widthFix" wx:for="{{scienceImgs}}" src="{{item.filePath}}" wx:key="filePath"></image>
     <view class="mt10px mb10px">环境展示</view>
   </view>
   <!-- 底部导航栏 -->

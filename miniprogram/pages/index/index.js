@@ -81,61 +81,67 @@ Page({
     }
   },
   async getCarousel() { // 获取轮播图
-    const that = this
     const result = await app.cloudFun({
       name: 'home',
       data: {
-        method: 'getCarousel'
+        method: 'getCarousel',
+        type: '1'
       }
     })
     if (result) {
       this.carouselList = result.data
-      that.setData({
-        carouselList: that.carouselList
+      this.setData({
+        carouselList: this.carouselList
       })
     }
   },
-  getThemes() { // 获取 "今日推荐" 的 "服务单"
-    const that = this
-    wx.request({
-      url: `${app.globalData.baseURL}/Themes/getThemes?access_token=${app.globalData.token}`,
-      method: 'POST',
+  async getThemes() { // 获取 "今日推荐" 的 "服务单"
+    const result = await app.cloudFun({
+      name: 'home',
       data: {
-        isRecommend: true
-      },
-      success: function (response) {
-        if (response.data.code === 0) {
-          that.themeData = response.data.data
-          that.setData({
-            themeData: that.themeData
-          })
-        }
-      },
-      fail: function (err) {
-
+        method: 'getIsRecommend'
       }
     })
+    if (result) {
+      this.themeData = result.data
+      this.setData({
+        themeData: this.themeData
+      })
+    }
+    // const that = this
+    // wx.request({
+    //   url: `${app.globalData.baseURL}/Themes/getThemes?access_token=${app.globalData.token}`,
+    //   method: 'POST',
+    //   data: {
+    //     isRecommend: true
+    //   },
+    //   success: function (response) {
+    //     if (response.data.code === 0) {
+    //       that.themeData = response.data.data
+    //       that.setData({
+    //         themeData: that.themeData
+    //       })
+    //     }
+    //   },
+    //   fail: function (err) {
+
+    //   }
+    // })
   },
-  getScienceImgs() { // 获取 "环境展示" 图片
-    const that = this
-    wx.request({
-      url: `${app.globalData.baseURL}/Carousels/getCarousel?access_token=${app.globalData.token}`,
-      method: 'POST',
+  async getScienceImgs() { // 获取 "环境展示" 图片
+    const result = await app.cloudFun({
+      name: 'home',
       data: {
-        type: 2
-      },
-      success: function (response) {
-        if (response.data.code === 0) {
-          that.scienceImgs = response.data.data
-          that.setData({
-            scienceImgs: that.scienceImgs
-          })
-        }
-      },
-      fail: function (err) {
-
+        method: 'getCarousel',
+        type: '2'
       }
     })
+    if (result) {
+      this.scienceImgs = result.data
+      this.setData({
+        scienceImgs: this.scienceImgs
+      })
+    }
   },
   gotoDetailPage(e) {
     wx.navigateTo({
