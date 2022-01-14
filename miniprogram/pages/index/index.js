@@ -108,25 +108,6 @@ Page({
         themeData: this.themeData
       })
     }
-    // const that = this
-    // wx.request({
-    //   url: `${app.globalData.baseURL}/Themes/getThemes?access_token=${app.globalData.token}`,
-    //   method: 'POST',
-    //   data: {
-    //     isRecommend: true
-    //   },
-    //   success: function (response) {
-    //     if (response.data.code === 0) {
-    //       that.themeData = response.data.data
-    //       that.setData({
-    //         themeData: that.themeData
-    //       })
-    //     }
-    //   },
-    //   fail: function (err) {
-
-    //   }
-    // })
   },
   async getScienceImgs() { // 获取 "环境展示" 图片
     const result = await app.cloudFun({
