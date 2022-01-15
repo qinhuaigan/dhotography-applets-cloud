@@ -90,7 +90,7 @@ Page({
       key: 'token',
     })
     wx.reLaunch({
-      url: '../login/login',
+      url: '../login/index',
     })
   },
   async getOrderCount() { // 获取订单 "统计数据"

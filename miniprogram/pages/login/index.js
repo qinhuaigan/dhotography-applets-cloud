@@ -31,8 +31,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -275,7 +274,8 @@ Page({
       name: 'user',
       // 传给云函数的参数
       data: {
-        type: 'signUp',
+        name: 'user',
+        method: 'signUp',
         data: {
           phone: this.data.username, // 手机号
           email: this.data.email,
