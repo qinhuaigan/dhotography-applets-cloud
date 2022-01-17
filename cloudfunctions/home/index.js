@@ -72,7 +72,6 @@ const Api = {
   },
   // 获取 "今日推荐" 数据
   getIsRecommend: async (event, context) => {
-    console.log('查询今日推荐')
     const result = await new Promise((resolve) => {
       Theme.where({
         isRecommend: true
@@ -89,6 +88,5 @@ const Api = {
         data: result
       }
     }
-    console.log('result ===', result)
   }
 }
