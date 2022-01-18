@@ -18,20 +18,20 @@ Page({
     interval: 2000,
     duration: 500,
     tabsData: [{
-      label: '街拍',
-      value: 1,
+      label: 'l',
+      value: '1',
       path: `cloud://clound2-9ga4gs443dee48af.636c-clound2-9ga4gs443dee48af-1308948710/icon/AFEIDBAEGAAg2YXv0wUolsjw1AIwbDhsQGc.png`
     }, {
       label: '写真',
-      value: 2,
+      value: '2',
       path: `cloud://clound2-9ga4gs443dee48af.636c-clound2-9ga4gs443dee48af-1308948710/icon/AFEIDBAEGAAg24Xv0wUooa6o0AcwbDhsQGc.png`
     }, {
       label: '棚拍',
-      value: 3,
+      value: '3',
       path: `cloud://clound2-9ga4gs443dee48af.636c-clound2-9ga4gs443dee48af-1308948710/icon/AFEIDBAEGAAg2YXv0wUolsjw1AIwbDhsQGc (1).png`
     }, {
       label: '婚庆',
-      value: 4,
+      value: '4',
       path: `cloud://clound2-9ga4gs443dee48af.636c-clound2-9ga4gs443dee48af-1308948710/icon/AFEIDBAEGAAg3oXv0wUo5IrS6QcwbDhsQGc.png`
     }]
   },
@@ -126,7 +126,7 @@ Page({
   },
   gotoDetailPage(e) {
     wx.navigateTo({
-      url: `../produceDetail/index?id=${e.currentTarget.dataset.theme.id}`,
+      url: `../produceDetail/index?id=${e.currentTarget.dataset.theme._id}`,
     })
   }
 })

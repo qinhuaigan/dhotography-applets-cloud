@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/index",
     "pages/logs/logs",
     "pages/produce/index",
@@ -13,8 +14,7 @@
     "pages/userInfo/index",
     "pages/mapPage/mapPage",
     "pages/evaluatePage/index",
-    "pages/evaluateList/index",
-    "pages/index/index"
+    "pages/evaluateList/index"
   ],
   "entryPagePath": "pages/index/index",
   "window": {

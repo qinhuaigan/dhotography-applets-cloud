@@ -4,9 +4,9 @@
 <view class="mt20px">
   <view class="themeCar" wx:if="{{themeDetail}}">
     <swiper class="carouselSwiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
-      <block wx:for="{{themeDetail.files}}" wx:key="path">
+      <block wx:for="{{themeDetail.fileList}}" wx:key="path">
         <swiper-item>
-          <view class="carouselImg" style="background-image: url('{{baseURL}}{{item.path}}')"></view>
+          <image mode="widthFix" width="100%" height="180px" src="{{item.filePath}}"></image>
         </swiper-item>
       </block>
     </swiper>
@@ -23,7 +23,7 @@
       <view class="detailTitle">
         <view class="detailTitleText">服务详情</view>
         <view class="detailTitleLine"></view>
-        <view class="textarea" wx:if="{{themeDetail.detail}}">{{themeDetail.detail || ''}}</view>
+        <rich-text nodes="{{themeDetail.detail}}" wx:if="{{themeDetail.detail}}"></rich-text>
         <view class="empty" wx:if="{{!themeDetail.detail}}">暂无内容</view>
       </view>
     </view>
@@ -91,8 +91,7 @@
             <view wx:if="{{item.imgs.length > 0}}" class="evaluaImgList mt20px">
               <wux-row gutter="15">
                 <wux-col span="3" wx:for="{{item.imgs}}" wx:for-index="ids" wx:for-item="img" wx:key="ids">
-                  <view bindtap="showBigImg" class="evaluaImgItem" data-current="{{img.path}}" data-index="{{index}}"
-                    style="background-image: url('{{img.path}}')"></view>
+                  <view bindtap="showBigImg" class="evaluaImgItem" data-current="{{img.path}}" data-index="{{index}}" style="background-image: url('{{img.path}}')"></view>
                 </wux-col>
               </wux-row>
             </view>

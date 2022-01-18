@@ -12,7 +12,7 @@ Page({
     pageSize: 2,
     evaluateList: [], // 评论列表
     evaluateStatistics: null,
-    totalEvaluete: 0
+    totalEvaluete: 0,
   },
 
   /**
@@ -78,7 +78,16 @@ Page({
     })
   },
   async getThemeDetail(id) {
-    const result = await app.postData('/Themes/getThemeDetail', { id })
+    const result = await app.cloudFun({
+      name: 'produce',
+      data: {
+        method: 'getThemeDetail',
+        data: {
+          id
+        }
+      }
+    })
+
     if (result) {
       result.data.totalMoney = `${result.data.price.toFixed(2)}`
       this.setData({
@@ -117,7 +126,10 @@ Page({
     }
   },
   showBigImg(e) { // 查看大图
-    const { current, index } = e.currentTarget.dataset
+    const {
+      current,
+      index
+    } = e.currentTarget.dataset
     wx.previewImage({
       urls: this.data.evaluateList[index].imgs.reduce((total, item) => {
         total.push(item.path)

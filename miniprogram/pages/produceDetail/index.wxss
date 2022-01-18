@@ -4,6 +4,13 @@ page {
   padding-bottom: 140rpx;
 }
 
+rich-text {
+  font-weight: normal;
+  color: rgb(53, 53, 53);
+  font-size: 30rpx;
+  line-height: 20px;
+}
+
 .themeCar {
   width: 100%;
   padding: 0 30rpx;

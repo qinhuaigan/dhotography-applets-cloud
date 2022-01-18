@@ -16,13 +16,13 @@ Page({
       label: '全部',
       value: null
     }, {
-      label: '主题拍摄',
+      label: '校园主题',
       value: 1
     }, {
-      label: '婚纱定制',
+      label: '海景主题',
       value: 2
     }, {
-      label: '婚礼定制',
+      label: '纪念主题',
       value: 3
     }],
     themeData: []
@@ -84,38 +84,29 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getThemes() {
-    const that = this
-    app.showLoading()
-    wx.request({
-      url: `${app.globalData.baseURL}/Themes/getThemes?token=${app.globalData.token}`,
-      method: 'post',
+  async getThemes() {
+    const result = await app.cloudFun({
+      name: 'produce',
       data: {
-        series: this.data.series,
-        type: this.data.type,
-        currentPage: this.data.currentPage,
-        pageSize: this.data.pageSize
-      },
-      success(response) {
-        if (response.data.code === 0) {
-          that.data.themeData = [...that.data.themeData, ...response.data.data]
-          that.data.total = response.data.count
-          that.data.themeData.forEach((item) => {
-            item.totalMoney = item.price.toFixed(2)
-          })
-          that.setData({
-            themeData: that.data.themeData,
-            total: that.data.total
-          })
-        } else {
-
+        method: 'getThemeList',
+        data: {
+          series: this.data.series,
+          type: this.data.type,
+          currentPage: this.data.currentPage,
+          pageSize: this.data.pageSize
         }
-        app.hideLoading()
-      },
-      fail(err) {
-        app.hideLoading()
       }
     })
+    this.data.themeData = [...this.data.themeData, ...result.data]
+    this.data.total = result.count
+    this.data.themeData.forEach((item) => {
+      item.totalMoney = item.price.toFixed(2)
+    })
+    this.setData({
+      themeData: this.data.themeData,
+      total: this.data.total
+    })
+
   },
   change(e) {
     this.data.themeData = []
@@ -129,7 +120,7 @@ Page({
   },
   gotoDetailPage(e) {
     wx.navigateTo({
-      url: `../produceDetail/index?id=${e.currentTarget.dataset.theme.id}`,
+      url: `../produceDetail/index?id=${e.currentTarget.dataset.theme._id}`,
     })
   },
   gotoOrderPage(e) { // 跳转到预约页面

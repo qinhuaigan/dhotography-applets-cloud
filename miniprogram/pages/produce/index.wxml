@@ -6,7 +6,7 @@
 </view>
 <view class="mt20px">
   <view class="themeCar" data-theme="{{item}}" wx:for="{{themeData}}" wx:key="id" bindtap="gotoDetailPage">
-    <image mode="widthFix" src="{{baseURL}}{{item.files[0] ? item.files[0].path : null}}"></image>
+    <image mode="widthFix" src="{{item.fileList[0] ? item.fileList[0].filePath : null}}"></image>
     <view class="carTitle">{{item.title}}</view>
     <view class="carDescription">{{item.description}}</view>
     <view class="carFooter clearfix">
