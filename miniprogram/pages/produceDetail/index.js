@@ -96,18 +96,21 @@ Page({
     }
   },
   async getEvaluates(themeId) { // 获取评论
-    const result = await app.postData('/Evaluates/getEvaluateByThemeId', {
-      currentPage: this.data.currentPage,
-      pageSize: this.data.pageSize,
-      themeId
+    const result = await app.cloudFun({
+      name: 'evaluate',
+      data: {
+        method: 'getEvaluates',
+        data: {
+          themeId,
+          currentPage: this.data.currentPage,
+          pageSize: this.data.pageSize
+        }
+      }
     })
     if (result) {
       const evaluateList = result.data
       evaluateList.forEach((item) => {
         item.avatar = item.avatar ? `${app.globalData.baseURL}${item.avatar}` : app.globalData.defaultAvatar
-        item.imgs.forEach((img) => {
-          img.path = `${app.globalData.baseURL}${img.path}`
-        })
       })
       this.setData({
         evaluateList,
@@ -116,14 +119,18 @@ Page({
     }
   },
   async getEvaluateStatistics(themeId) { // 获取评论统计
-    const result = await app.postData('/Evaluates/getEvaluateStatisticsByThemeId', {
-      themeId
+    const result = await app.cloudFun({
+      name: 'evaluate',
+      data: {
+        method: 'getEvaluateStatistics',
+        data: {
+          themeId
+        }
+      }
     })
-    if (result) {
-      this.setData({
-        evaluateStatistics: result.data
-      })
-    }
+    this.setData({
+      evaluateStatistics: result.data
+    })
   },
   showBigImg(e) { // 查看大图
     const {

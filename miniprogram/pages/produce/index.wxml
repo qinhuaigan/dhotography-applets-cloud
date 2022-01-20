@@ -5,7 +5,7 @@
   </wux-tabs>
 </view>
 <view class="mt20px">
-  <view class="themeCar" data-theme="{{item}}" wx:for="{{themeData}}" wx:key="id" bindtap="gotoDetailPage">
+  <view class="themeCar" data-theme="{{item}}" wx:for="{{themeData}}" wx:key="_id" bindtap="gotoDetailPage">
     <image mode="widthFix" src="{{item.fileList[0] ? item.fileList[0].filePath : null}}"></image>
     <view class="carTitle">{{item.title}}</view>
     <view class="carDescription">{{item.description}}</view>

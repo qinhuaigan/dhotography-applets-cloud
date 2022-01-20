@@ -2,7 +2,7 @@
 <wux-toptips id="wux-toptips" />
 <view class="car" wx:if="{{themeDetail}}">
   <view class="carLeft">
-    <image src="{{baseURL}}{{themeDetail.files[0] ? themeDetail.files[0].path : ''}}" mode="widthFix"></image>
+    <image src="{{themeDetail.fileList[0] ? themeDetail.fileList[0].filePath : ''}}" style="width: 100%;" mode="widthFix"></image>
   </view>
   <view class="carRight">
     <view class="carTitle overHide">{{themeDetail.title}}</view>

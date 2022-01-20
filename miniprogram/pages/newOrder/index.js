@@ -97,14 +97,20 @@ Page({
   async submit() {
     const data = {
       token: app.globalData.token,
-      themeId: this.data.themeDetail.id,
+      themeId: this.data.themeDetail._id,
       themeNo: this.data.themeDetail.themeNo,
       appointmentTime: this.data.appointmentTime,
       customerName: this.data.customerName,
       phone: this.data.phone,
       customerRemarks: this.data.customerRemarks
     }
-    const result = await app.postData('/orders/addOrder', data)
+    const result = await app.cloudFun({
+      name: 'order',
+      data: {
+        method: 'createOrder',
+        data
+      }
+    })
     if (result) {
       $wuxToptips().success({
         hidden: false,
@@ -118,7 +124,15 @@ Page({
     }
   },
   async getThemeDetail(id) {
-    const result = await app.postData('/Themes/getThemeDetail', { id })
+    const result = await app.cloudFun({
+      name: 'produce',
+      data: {
+        method: 'getThemeDetail',
+        data: {
+          id
+        }
+      }
+    })
     if (result) {
       this.data.themeDetail = result.data
       this.data.themeDetail.priceShow = this.data.themeDetail.price.toFixed(2)

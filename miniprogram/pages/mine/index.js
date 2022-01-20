@@ -94,7 +94,13 @@ Page({
     })
   },
   async getOrderCount() { // 获取订单 "统计数据"
-    const result = await app.postData('/Orders/userOrderCount')
+    const result = await app.cloudFun({
+      name: 'order',
+      data: {
+        method: 'getOrderCount'
+      }
+    })
+    // const result = await app.postData('/Orders/userOrderCount')
     if (result) {
       this.setData({
         orderCount: result.data

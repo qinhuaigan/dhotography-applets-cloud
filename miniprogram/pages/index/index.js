@@ -28,7 +28,7 @@ Page({
     }, {
       label: '棚拍',
       value: '3',
-      path: `cloud://clound2-9ga4gs443dee48af.636c-clound2-9ga4gs443dee48af-1308948710/icon/AFEIDBAEGAAg2YXv0wUolsjw1AIwbDhsQGc (1).png`
+      path: `cloud://clound2-9ga4gs443dee48af.636c-clound2-9ga4gs443dee48af-1308948710/icon/AFEIDBAEGAAg3IXv0wUo9ajG4QIwbDhsQGc.png`
     }, {
       label: '婚庆',
       value: '4',

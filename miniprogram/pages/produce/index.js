@@ -125,7 +125,7 @@ Page({
   },
   gotoOrderPage(e) { // 跳转到预约页面
     wx.navigateTo({
-      url: `../newOrder/index?id=${e.currentTarget.dataset.theme.id}`
+      url: `../newOrder/index?id=${e.currentTarget.dataset.theme._id}`
     })
   }
 })

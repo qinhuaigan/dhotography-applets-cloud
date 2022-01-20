@@ -132,15 +132,15 @@ Page({
       currentPage: this.data.currentPage,
       pageSize: this.data.pageSize
     }
-    const result = await app.postData('/Orders/getOrdersByToken', data)
+    const result = await app.cloudFun({
+      name: 'order',
+      data: {
+        method: 'getOrderByToken',
+        data
+      }
+    })
     if (result) {
-      const orderList = result.data.reduce((total, item) => {
-        item.themeInfo.files.forEach((file) => {
-          file.path = `${app.globalData.baseURL}${file.path}`
-        })
-        total.push(item)
-        return total
-      }, [])
+      const orderList = result.data
       this.setData({
         orderList: [...this.data.orderList, ...orderList],
         total: Math.ceil(result.count / this.data.pageSize),
@@ -159,22 +159,27 @@ Page({
       defaultText: '',
       placeholder: '请输入说明',
       maxlength: -1,
-      onConfirm: (e, response) => {
+      onConfirm: async (e, response) => {
         const content = response
-        app.postData('/Orders/updateOrder', {
-          id,
-          status: -2,
-          customerCancelRemarks: content
-        }).then((result) => {
-          if (result) {
-            $wuxToptips().success({
+        const result = await app.cloudFun({
+          name: 'order',
+          data: {
+            method: 'cancelOrder',
+            data: {
+              id,
+              customerCancelRemarks: content
+            }
+          }
+        })
+        if (result) {
+              $wuxToptips().success({
               hidden: false,
               text: '订单取消成功',
               duration: 3000,
               success() {},
             })
             for (let i = 0; i < this.data.orderList.length; i++) {
-              if (this.data.orderList[i].id === id) {
+              if (this.data.orderList[i]._id === id) {
                 this.data.orderList[i].status = -2
                 break
               }
@@ -182,8 +187,7 @@ Page({
             this.setData({
               orderList: this.data.orderList
             })
-          }
-        })
+        }
       },
     })
   },
@@ -191,6 +195,7 @@ Page({
     const {
       id
     } = e.currentTarget.dataset
+    console.log('id ====', id)
     wx.navigateTo({
       url: `../orderDetail/index?id=${id}`,
     })

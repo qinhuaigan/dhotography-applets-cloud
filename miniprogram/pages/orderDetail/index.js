@@ -82,11 +82,16 @@ Page({
 
   },
   async getOrderInfo(id) { // 获取订单详情
-    const result = await app.postData('/Orders/getOrderDetail', { id })
+    const result = await app.cloudFun({
+      name: 'order',
+      data: {
+        method: 'getOrderDetail',
+        data: {
+          id
+        }
+      }
+    })
     if (result) {
-      result.data.themeInfo.files.forEach((item) => {
-        item.path = `${app.globalData.baseURL}${item.path}`
-      })
       this.setData({
         orderInfo: result.data
       })
@@ -108,8 +113,5 @@ Page({
       return
     }
     app.openLocation(this.data.orderInfo.themeInfo.longitude, this.data.orderInfo.themeInfo.latitude)
-    // wx.navigateTo({
-    //   url: `../mapPage/mapPage?lat=${this.data.orderInfo.themeInfo.latitude}&lng=${this.data.orderInfo.themeInfo.longitude}`,
-    // })
   }
 })

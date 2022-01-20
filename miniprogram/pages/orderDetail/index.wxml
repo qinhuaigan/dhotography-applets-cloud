@@ -5,9 +5,7 @@
   <view class="contentBox">
     <wux-row gutter="10">
       <wux-col span="4">
-        <view class="imgBox"
-          style="background-image: url('{{orderInfo.themeInfo.files[0] ? orderInfo.themeInfo.files[0].path : ''}}')">
-        </view>
+        <image style="width: 100%;" mode="widthFix" src="{{orderInfo.themeInfo.fileList[0] ? orderInfo.themeInfo.fileList[0].filePath : null}}"></image>
       </wux-col>
       <wux-col span="8">
         <view class="overHide fz18px">{{orderInfo.themeInfo.title}}</view>

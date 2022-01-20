@@ -20,7 +20,6 @@ exports.main = async (event, context) => {
 // 验证必填函数
 function checkRequired(field, data) {
   let msg = null
-  console.log('data  ==', data)
   for (const key in field) {
     if (!data[key]) {
       msg = `${key}不能为空`
@@ -51,10 +50,10 @@ const Api = {
       isDel: _.neq(true)
     }
     if (data.series) {
-      countWhere.series = data.series
+      countWhere.series = parseFloat(data.series)
     }
     if (data.type) {
-      countWhere.type = data.type
+      countWhere.type = parseFloat(data.type)
     }
 
     const count = await new Promise((resolve) => {

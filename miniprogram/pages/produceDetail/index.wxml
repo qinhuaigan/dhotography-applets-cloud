@@ -47,9 +47,9 @@
       </view>
       <view class="evaluateContent">
         <view class="evaluateTabList" wx:if="{{evaluateStatistics}}">
-          <view class="evaluateTab">好评({{evaluateStatistics.good}})</view>
-          <view class="evaluateTab">中评({{evaluateStatistics.middle}})</view>
-          <view class="evaluateTab">差评({{evaluateStatistics.bad}})</view>
+          <view class="evaluateTab">好评({{evaluateStatistics.good || 0}})</view>
+          <view class="evaluateTab">中评({{evaluateStatistics.middle || 0}})</view>
+          <view class="evaluateTab">差评({{evaluateStatistics.bad || 0}})</view>
         </view>
         <view class="userEvaluateList mt20px">
           <view class="userEvaluateListItem" wx:for="{{evaluateList}}" wx:key="id">
@@ -110,7 +110,7 @@
         <view>电话</view>
       </view>
     </view>
-    <navigator url="../newOrder/index?id={{themeDetail.id}}">
+    <navigator url="../newOrder/index?id={{themeDetail._id}}">
       <view class="bottomMenuRightBtn">立即预约</view>
     </navigator>
   </view>
