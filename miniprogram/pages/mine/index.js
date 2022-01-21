@@ -108,22 +108,34 @@ Page({
     }
   },
   async getUnreadMsgNum() { // 获取 "最新消息--未读消息" 数量
-    const result = await app.postData('/Messages/getUnreadMsgNum', {
-      msgType: 2
+    const result = await app.cloudFun({
+      name: 'message',
+      data: {
+        method: 'getSubscribeMsgNum',
+        data: {
+          msgType: 2
+        }
+      }
     })
     if (result) {
       this.setData({
-        unreadMsgNum: result.data.total
+        unreadMsgNum: result.count
       })
     }
   },
   async getSubscribeMsgNum() { // 获取 "我的订阅--未读消息" 数量
-    const result = await app.postData('/Messages/getUnreadMsgNum', {
-      msgType: 1
+    const result = await app.cloudFun({
+      name: 'message',
+      data: {
+        method: 'getSubscribeMsgNum',
+        data: {
+          msgType: 1
+        }
+      }
     })
     if (result) {
       this.setData({
-        subscribeMsgNum: result.data.total
+        subscribeMsgNum: result.count
       })
     }
   },

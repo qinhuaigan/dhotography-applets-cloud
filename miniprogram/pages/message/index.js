@@ -80,21 +80,21 @@ Page({
       this.getMessageList()
     }
   },
-  async getMessageList() { // 获取 "订单列表"
+  async getMessageList() { // 获取 "消息列表"
     const data = {
       currentPage: this.data.currentPage,
       pageSize: this.data.pageSize,
       msgType: 2
     }
-    const result = await app.postData('/Messages/getMessage', data)
+    const result = await app.cloudFun({
+      name: 'message',
+      data: {
+        method: 'getMessageListByToken',
+        data
+      }
+    })
     if (result) {
-      const messageList = result.data.reduce((total, item) => {
-        item.themeInfo.files.forEach((file) => {
-          file.path = `${app.globalData.baseURL}${file.path}`
-        })
-        total.push(item)
-        return total
-      }, [])
+      const messageList = result.data
       this.setData({
         messageList: [...this.data.messageList, ...messageList],
         total: Math.ceil(result.count / this.data.pageSize),
@@ -106,7 +106,15 @@ Page({
     const { id, themeid, orderid, msgtype } = e.currentTarget.dataset
     const pageId = msgtype == 1 ? orderid : themeid
     // 标记消息为已读
-    app.postData('/Messages/setRead', { id })
+    app.cloudFun({
+      name: 'message',
+      data: {
+        method: 'setRead',
+        data: {
+          id
+        }
+      }
+    })
     wx.navigateTo({
       url: `${this.data.typePageMap[msgtype]}?id=${pageId}`,
     })

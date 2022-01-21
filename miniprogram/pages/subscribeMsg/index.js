@@ -34,7 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -99,18 +99,15 @@ Page({
       pageSize: this.data.pageSize,
       msgType: 1
     }
-    const result = await app.postData('/Messages/getMessage', data)
+    const result = await app.cloudFun({
+      name: 'message',
+      data: {
+        method: 'getMessageListByToken',
+        data
+      }
+    })
     if (result) {
-      const messageList = result.data.reduce((total, item) => {
-        if (item.orderInfo) {
-          item.orderInfo.createTime = app.formatDate(item.orderInfo.createTime)
-        }
-        item.themeInfo.files.forEach((file) => {
-          file.path = `${app.globalData.baseURL}${file.path}`
-        })
-        total.push(item)
-        return total
-      }, [])
+      const messageList = result.data
       this.setData({
         messageList: [...this.data.messageList, ...messageList],
         total: Math.ceil(result.count / this.data.pageSize),
@@ -119,10 +116,22 @@ Page({
     }
   },
   gotoDetail(e) { // 查看消息详情
-    const { id, themeid, orderid, msgtype } = e.currentTarget.dataset
+    const {
+      id,
+      themeid,
+      orderid,
+      msgtype
+    } = e.currentTarget.dataset
     const pageId = msgtype == 1 ? orderid : themeid
-    // 标记消息为已读
-    app.postData('/Messages/setRead', { id })
+    app.cloudFun({
+      name: 'message',
+      data: {
+        method: 'setRead',
+        data: {
+          id
+        }
+      }
+    })
     wx.navigateTo({
       url: `${this.data.typePageMap[msgtype]}?id=${pageId}`,
     })

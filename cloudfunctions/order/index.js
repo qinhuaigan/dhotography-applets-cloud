@@ -25,7 +25,7 @@ function formatDate(value, type) {
     return null;
   }
   const date = new Date(value);
-  let fmt = type || 'yyyy-MM-dd HH:mm:dd';
+  let fmt = type || 'yyyy-MM-dd HH:mm:ss';
   var obj = {
     'y': date.getFullYear(), // 年份，注意必须用getFullYear
     'M': date.getMonth() + 1, // 月份，注意是从0-11
@@ -78,7 +78,8 @@ const Api = {
       appointmentTime: '预约时间',
       phone: '手机号',
       customerName: '姓名',
-      token: 'token'
+      token: 'token',
+      themeId: '服务单 id'
     }
     const msg = checkRequired(field, data)
     if (msg) {
@@ -87,11 +88,31 @@ const Api = {
         msg
       }
     }
+
+    // 查询 "服务单" 信息
+    const themeInfo = await new Promise((resolve) => {
+      Theme.doc(data.themeId).get().then((res) => {
+        resolve(res.data)
+      }).catch((err) => {
+        resolve(false)
+      })
+    })
+
+    if (!themeInfo) {
+      return {
+        code: -1,
+        msg: '服务单不存在'
+      }
+    }
+
     data = Object.assign(data, {
       createTime: new Date(),
       status: 0,
       userId,
-      orderNo: `YU_${formatDate(new Date(), 'yyyyMMddHHmmss')}` // 服务单号
+      orderNo: `YU_${formatDate(new Date(), 'yyyyMMddHHmmss')}`, // 服务单号
+      themeNo: themeInfo.themeNo,
+      themeTitle: themeInfo.title,
+      appointmentTime: new Date(data.appointmentTime).getTime() // 由于不支持 "date" 类型筛选，故保存 "时间戳"
     })
     const result = await new Promise((resolve) => {
       Order.add({
@@ -224,7 +245,7 @@ const Api = {
     const countWhere = {
       userId
     }
-    if (data.status !== null && data.status !== undefined) {
+    if (data.status !== null && data.status !== undefined && data.status !== '') {
       countWhere.status = data.status < 0 ? _.lt(0) : _.eq(data.status)
     }
 
@@ -343,7 +364,6 @@ const Api = {
     }
   },
   getOrderDetail: async (event, content) => { // 获取订单详情
-    console.log(111111111111111111)
     const data = event.data
     const msg = checkRequired({
       id: 'id'
@@ -370,7 +390,7 @@ const Api = {
     }
 
     // 获取 "主题/服务单" 信息
-    const themeInfo = await new Promise((resolve) => {
+    let themeInfo = await new Promise((resolve) => {
       Theme.doc(orderInfo.themeId).get().then((res) => {
         resolve(res.data)
       }).catch((err) => {
@@ -378,6 +398,8 @@ const Api = {
       })
     })
 
+    orderInfo.appointmentTime = formatDate(orderInfo.appointmentTime)
+    orderInfo.createTime = formatDate(orderInfo.createTime)
     if (!themeInfo) {
       return {
         code: -1,

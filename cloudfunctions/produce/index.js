@@ -80,6 +80,48 @@ const Api = {
       }
     }
 
+    // 获取订单信息
+    const themeIdArr = result.reduce((total, item) => {
+      total.push(item._id)
+      return total
+    }, [])
+    const orders = await new Promise((resolve) => {
+      Order.where({
+        themeId: _.in(themeIdArr)
+      })
+      .field({
+        status: true,
+        _id: true,
+        themeId: true
+      })
+      .get()
+      .then((res) => {
+        resolve(res.data)
+      })
+      .catch((err) => {
+        resolve(false)
+      })
+    })
+
+    if (!orders) {
+      return {
+        code: -1,
+        msg: '获取订单数据失败'
+      }
+    }
+
+    // 合并数据
+    for (let i = 0; i < result.length; i++) {
+      for (let j = 0; j < orders.length; j++) {
+        if (orders[j].themeId === result[i]._id) {
+          result[i].num = result[i].num ? result[i].num += 1 : 1
+          orders.splice(j, 1)
+          j--
+          break
+        }
+      }
+    }
+
     return {
       code: 0,
       count,
