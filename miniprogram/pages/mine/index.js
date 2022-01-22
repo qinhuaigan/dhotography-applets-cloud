@@ -1,5 +1,8 @@
 // pages/mine/index.js
 const app = getApp()
+import {
+  $wuxToptips
+} from '../../components/wux-weapp/index'
 Page({
 
   /**

@@ -162,5 +162,22 @@ Page({
       }, []),
       current
     })
+  },
+  gotoOrderPage(e) { // 跳转到预约页面
+    if (!app.globalData.userInfo) {
+      $wuxToptips().warn({
+        hidden: false,
+        text: '请先登录',
+        duration: 3000,
+        success() {},
+      })
+      wx.navigateTo({
+        url: '../login/index',
+      })
+      return
+    }
+    wx.navigateTo({
+      url: `../newOrder/index?id=${this.themeDetail._id}`
+    })
   }
 })

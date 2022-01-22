@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
 <view>
   <view class="carouselBox">
     <swiper class="carouselSwiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"

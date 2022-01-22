@@ -1,5 +1,8 @@
 // pages/produce/index.js
 const app = getApp()
+import {
+  $wuxToptips
+} from '../../components/wux-weapp/index'
 Page({
 
   /**
@@ -124,6 +127,18 @@ Page({
     })
   },
   gotoOrderPage(e) { // 跳转到预约页面
+    if (!app.globalData.userInfo) {
+      $wuxToptips().warn({
+        hidden: false,
+        text: '请先登录',
+        duration: 3000,
+        success() {},
+      })
+      wx.navigateTo({
+        url: '../login/index',
+      })
+      return
+    }
     wx.navigateTo({
       url: `../newOrder/index?id=${e.currentTarget.dataset.theme._id}`
     })

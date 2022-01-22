@@ -85,7 +85,9 @@ App({
             success() {},
           })
         }
-      }).catch(() => {
+      }).catch((e) => {
+        console.log('option ===', option)
+        console.log('网络错误 e ===', e)
         wx.hideLoading()
         $wuxToptips().error({
           hidden: false,

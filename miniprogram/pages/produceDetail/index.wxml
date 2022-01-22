@@ -112,8 +112,6 @@
         <view>电话</view>
       </view>
     </view>
-    <navigator url="../newOrder/index?id={{themeDetail._id}}">
-      <view class="bottomMenuRightBtn">立即预约</view>
-    </navigator>
+    <view id="{{themeDetail._id}}" class="bottomMenuRightBtn">立即预约</view>
   </view>
 </view>

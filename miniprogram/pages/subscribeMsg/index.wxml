@@ -1,4 +1,6 @@
 <!--pages/subscribeMsg/index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
 <view class="orderList">
   <view class="empty" wx:if="{{!messageList || messageList.length === 0}}">
     <wux-icon type="ios-paper" size="40" />

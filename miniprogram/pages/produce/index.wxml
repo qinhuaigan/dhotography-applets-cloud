@@ -1,4 +1,6 @@
 <!--pages/produce/index.wxml-->
+<!-- 消息提示 -->
+<wux-toptips id="wux-toptips" />
 <view class="tabWarp">
   <wux-tabs bindchange="change">
     <wux-tab key="{{item.value}}" title="{{item.label}}" wx:for="{{tabs}}" wx:key="value"></wux-tab>
