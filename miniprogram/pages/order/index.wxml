@@ -21,7 +21,7 @@
     <view class="orderContent">
       <wux-row gutter="10">
         <wux-col span="3">
-          <image style="width: 100%;" mode="widthFix" src="{{item.themeInfo.fileList[0].filePath}}"></image>
+          <image style="width: 100%; height: 150rpx;" mode="aspectFill" src="{{item.themeInfo.fileList[0].filePath}}"></image>
         </wux-col>
         <wux-col span="9">
           <view class="overHide fz16px">{{item.themeInfo.title}}</view>

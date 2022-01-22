@@ -38,7 +38,7 @@
             </wux-badge>
           </view>
           <view class="fr" wx:if="{{totalEvaluete > 0}}">
-            <navigator url="../evaluateList/index?id={{themeDetail.id}}">
+            <navigator url="../evaluateList/index?id={{themeDetail._id}}">
               <text class="moreEvaluate">查看全部</text>
             </navigator>
           </view>
@@ -61,7 +61,7 @@
                 <wux-col span="10">
                   <view class="clearfix">
                     <view class="w70 fl">
-                      <view>{{item.chineseName}}</view>
+                      <view>{{item.nickname}}</view>
                       <view class="evaluateTime">{{item.createTime}} {{item.type == 2 ? '追评' : '评价'}}</view>
                     </view>
                   </view>
@@ -88,10 +88,12 @@
                 </view>
               </view>
             </view>
-            <view wx:if="{{item.imgs.length > 0}}" class="evaluaImgList mt20px">
+            <view wx:if="{{item.fileList.length > 0}}" class="evaluaImgList mt20px">
               <wux-row gutter="15">
-                <wux-col span="3" wx:for="{{item.imgs}}" wx:for-index="ids" wx:for-item="img" wx:key="ids">
-                  <view bindtap="showBigImg" class="evaluaImgItem" data-current="{{img.path}}" data-index="{{index}}" style="background-image: url('{{img.path}}')"></view>
+                <wux-col span="3" wx:for="{{item.fileList}}" wx:for-index="ids" wx:for-item="img" wx:key="ids">
+                  <view bindtap="showBigImg" class="evaluaImgItem" data-current="{{img.filePath}}" data-index="{{index}}">
+                    <image mode="aspectFill" src="{{img.filePath}}"></image>
+                  </view>
                 </wux-col>
               </wux-row>
             </view>

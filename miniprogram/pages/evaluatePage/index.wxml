@@ -5,9 +5,7 @@
   <view class="contentBox">
     <wux-row gutter="10">
       <wux-col span="3">
-        <view class="imgBox"
-          style="background-image: url('{{orderInfo.themeInfo.files[0] ? orderInfo.themeInfo.files[0].path : ''}}')">
-        </view>
+        <image style="width: 100%; max-height: 200px;" mode="widthFix" src="{{orderInfo.themeInfo.fileList[0] ? orderInfo.themeInfo.fileList[0].filePath : ''}}"></image>
       </wux-col>
       <wux-col span="9">
         <view class="overHide fz16px">{{orderInfo.themeInfo.title}}</view>
@@ -19,8 +17,7 @@
       <wux-row>
         <wux-col span="3">描述相符</wux-col>
         <wux-col span="3" wx:for="{{evaluateList}}" wx:key="index">
-          <view data-type="{{item.value}}" class="{{evaluateInfo.evalueteType == item.value ? 'active' : ''}}"
-            bindtap="selectEvaluateType">
+          <view data-type="{{item.value}}" class="{{evaluateInfo.evalueteType == item.value ? 'active' : ''}}" bindtap="selectEvaluateType">
             <wux-icon size="20" type="ios-rose" />
             <text class="ml5px">{{item.label}}</text>
           </view>
@@ -28,13 +25,13 @@
       </wux-row>
     </view>
     <view class="mt10px">
-      <wux-textarea rows="{{6}}" maxlength="-1" data-str="remark" bindblur="levelChange"
-        placeholder="从多角度评价服务，可以帮助更多有需要的人" />
+      <wux-textarea rows="{{6}}" maxlength="-1" data-str="remark" bindblur="levelChange" placeholder="从多角度评价服务，可以帮助更多有需要的人" />
     </view>
     <view class="">
       <wux-row gutter="15">
         <wux-col span="3" wx:for="{{fileList}}" wx:key="index">
-          <view class="imgBox {{index > 3 ? 'mt10px' : ''}} " style="background-image: url('{{item}}')">
+          <view class=" imgBox {{index> 3 ? 'mt10px' : ''}}">
+            <image mode="aspectFill" src="{{item.filePath}}"></image>
             <view class="removeIcon" data-index="{{index}}" bindtap="removeFile">
               <wux-icon size="20" type="ios-close" />
             </view>
@@ -61,16 +58,13 @@
   <view class="contentBox">
     <view style="color: #ccc;">服务评分</view>
     <wux-cell title="描述相符" hover-class="none">
-      <wux-rater slot="footer" max="5" data-str="accordLevel" bindchange="levelChange"
-        defaultValue="{{ evaluateInfo.accordLevel }}" />
+      <wux-rater slot="footer" max="5" data-str="accordLevel" bindchange="levelChange" defaultValue="{{ evaluateInfo.accordLevel }}" />
     </wux-cell>
     <wux-cell title="拍摄质量" hover-class="none">
-      <wux-rater slot="footer" max="5" data-str="qualityLevel" bindchange="levelChange"
-        defaultValue="{{ evaluateInfo.serviceLevel }}" />
+      <wux-rater slot="footer" max="5" data-str="qualityLevel" bindchange="levelChange" defaultValue="{{ evaluateInfo.serviceLevel }}" />
     </wux-cell>
     <wux-cell title="服务态度" hover-class="none">
-      <wux-rater slot="footer" max="5" data-str="attitudeLevel" bindchange="levelChange"
-        defaultValue="{{ evaluateInfo.serviceLevel }}" />
+      <wux-rater slot="footer" max="5" data-str="attitudeLevel" bindchange="levelChange" defaultValue="{{ evaluateInfo.serviceLevel }}" />
     </wux-cell>
   </view>
   <wux-button block class="mt20px" disabled="{{disabledBtn}}" bindtap="submitEvaluate" type="energized" class="w100">

@@ -228,8 +228,6 @@ const Api = {
       for (let j = 0; j < themeList.length; j++) {
         if (themeList[j]._id === result[i].themeId) {
           result[i].themeInfo = themeList[j]
-          themeList.splice(j, 1)
-          j--
           break
         }
       }

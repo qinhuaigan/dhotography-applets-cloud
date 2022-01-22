@@ -76,41 +76,69 @@ Page({
 
   },
   async getEvaluates(themeId) { // 获取评论
-    const result = await app.postData('/Evaluates/getEvaluateByThemeId', {
-      currentPage: this.data.currentPage,
-      pageSize: this.data.pageSize,
-      themeId
+    const result = await app.cloudFun({
+      name: 'evaluate',
+      data: {
+        method: 'getEvaluates',
+        data: {
+          currentPage: this.data.currentPage,
+          pageSize: this.data.pageSize,
+          themeId
+        }
+      }
     })
     if (result) {
       const evaluateList = result.data
-      evaluateList.forEach((item) => {
-        item.avatar = item.avatar ? `${app.globalData.baseURL}${item.avatar}` : app.globalData.defaultAvatar
-        item.imgs.forEach((img) => {
-          img.path = `${app.globalData.baseURL}${img.path}`
-        })
-      })
+      for (let i = 0; i < evaluateList.length; i++) {
+        evaluateList[i].avatar = await this.getAvatar(evaluateList[i].avatar)
+      }
       this.setData({
         evaluateList: [...this.data.evaluateList, ...evaluateList],
-        totalEvaluete: result.total,
-        totalPage: result.totalPage
+        totalEvaluete: result.count,
+        totalPage: Math.ceil(result.count / this.data.pageSize)
       })
     }
+  },
+  getAvatar(fileId) {
+    return new Promise((resolve) => {
+      if (!fileId) {
+        resolve(app.globalData.defaultAvatar)
+      } else {
+        wx.cloud.getTempFileURL({
+          fileList: [fileId],
+          success: res => {
+            console.log(res.fileList)
+            resolve(res.fileList[0].tempFileURL)
+          },
+          fail: () => {
+            resolve(false)
+          }
+        })
+      }
+    })
   },
   async getEvaluateStatistics(themeId) { // 获取评论统计
-    const result = await app.postData('/Evaluates/getEvaluateStatisticsByThemeId', {
-      themeId
+    const result = await app.cloudFun({
+      name: 'evaluate',
+      data: {
+        method: 'getEvaluateStatistics',
+        data: {
+          themeId
+        }
+      }
     })
-    if (result) {
-      this.setData({
-        evaluateStatistics: result.data
-      })
-    }
+    this.setData({
+      evaluateStatistics: result.data
+    })
   },
   showBigImg(e) { // 查看大图
-    const { current, index } = e.currentTarget.dataset
+    const {
+      current,
+      index
+    } = e.currentTarget.dataset
     wx.previewImage({
-      urls: this.data.evaluateList[index].imgs.reduce((total, item) => {
-        total.push(item.path)
+      urls: this.data.evaluateList[index].fileList.reduce((total, item) => {
+        total.push(item.filePath)
         return total
       }, []),
       current

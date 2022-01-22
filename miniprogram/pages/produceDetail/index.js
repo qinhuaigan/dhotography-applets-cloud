@@ -109,14 +109,32 @@ Page({
     })
     if (result) {
       const evaluateList = result.data
-      evaluateList.forEach((item) => {
-        item.avatar = item.avatar ? `${app.globalData.baseURL}${item.avatar}` : app.globalData.defaultAvatar
-      })
+      for (let i = 0; i < evaluateList.length; i++) {
+        evaluateList[i].avatar = await this.getAvatar(evaluateList[i].avatar)
+      }
       this.setData({
         evaluateList,
-        totalEvaluete: result.total
+        totalEvaluete: result.count
       })
     }
+  },
+  getAvatar(fileId) {
+    return new Promise((resolve) => {
+      if (!fileId) {
+        resolve(app.globalData.defaultAvatar)
+      } else {
+        wx.cloud.getTempFileURL({
+          fileList: [fileId],
+          success: res => {
+            console.log(res.fileList)
+            resolve(res.fileList[0].tempFileURL)
+          },
+          fail: () => {
+            resolve(false)
+          }
+        })
+      }
+    })
   },
   async getEvaluateStatistics(themeId) { // 获取评论统计
     const result = await app.cloudFun({
@@ -138,8 +156,8 @@ Page({
       index
     } = e.currentTarget.dataset
     wx.previewImage({
-      urls: this.data.evaluateList[index].imgs.reduce((total, item) => {
-        total.push(item.path)
+      urls: this.data.evaluateList[index].fileList.reduce((total, item) => {
+        total.push(item.filePath)
         return total
       }, []),
       current

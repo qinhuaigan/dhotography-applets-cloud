@@ -90,13 +90,16 @@ Page({
 
   },
   async getOrderInfo(id) { // 获取订单详情
-    const result = await app.postData('/Orders/getOrderDetail', {
-      id
+    const result = await app.cloudFun({
+      name: 'order',
+      data: {
+        method: 'getOrderDetail',
+        data: {
+          id
+        }
+      }
     })
     if (result) {
-      result.data.themeInfo.files.forEach((item) => {
-        item.path = `${app.globalData.baseURL}${item.path}`
-      })
       this.setData({
         orderInfo: result.data
       })
@@ -115,9 +118,26 @@ Page({
     wx.chooseImage({
       count: 1,
       success: (res) => {
-        this.data.fileList.push(res.tempFilePaths[0])
-        this.setData({
-          fileList: this.data.fileList
+        const fileName = res.tempFilePaths[0].split('/').pop()
+        app.showLoading()
+        wx.cloud.uploadFile({
+          cloudPath: `evaluate/${fileName}`, // 上传至云端的路径
+          filePath: res.tempFilePaths[0], // 小程序临时文件路径
+          success: res => {
+            app.hideLoading()
+            // 返回文件 ID
+            console.log(res.fileID)
+            this.data.fileList.push({
+              filePath: res.fileID,
+              fileName
+            })
+            this.setData({
+              fileList: this.data.fileList
+            })
+          },
+          fail: () => {
+            app.hideLoading()
+          }
         })
       }
     })
@@ -143,49 +163,33 @@ Page({
   async submitEvaluate(type) { // 提交评价信息
     // 先提交 "评价信息"，再上传 "文件"
     const data = Object.assign(this.data.evaluateInfo, {
-      id: this.data.orderInfo.id,
-      type: this.data.type
+      orderId: this.data.orderInfo._id,
+      themeId: this.data.orderInfo.themeId,
+      type: this.data.type,
+      fileList: this.data.fileList
     })
     this.setData({
       disabledBtn: true
     })
-    const submitResult = await app.postData('/Evaluates/addEvaluate', data)
-    if (submitResult) {
-      // 上传文件
-      const uploadArr = this.data.fileList.reduce((total, item) => {
-        total.push(new Promise((resolve) => {
-          wx.uploadFile({
-            filePath: item,
-            name: 'file',
-            url: `${app.globalData.baseURL}/storages/wxUploadFile?container=${submitResult.result.id}`,
-            success: (res) => {
-              resolve(res)
-            },
-            fail: (err) => {
-              console.log(err)
-              resolve(false)
-            }
+    const result = await app.cloudFun({
+      name: 'evaluate',
+      data: {
+        method: 'addEvaluate',
+        data
+      }
+    })
+    this.setData({
+      disabledBtn: false
+    })
+    if (result) {
+      wx.showToast({
+        title: '评价成功',
+        icon: 'success',
+        success: () => {
+          wx.navigateBack({
+            delta: -1,
           })
-        }))
-        return total
-      }, [])
-      Promise.all(uploadArr).then((uploadResult) => {
-        wx.showToast({
-          title: '发布成功',
-          icon: 'success',
-          success: () => {
-            wx.navigateBack({
-              delta: -1,
-            })
-          }
-        })
-        this.setData({
-          disabledBtn: false
-        })
-      })
-    } else {
-      this.setData({
-        disabledBtn: false
+        }
       })
     }
   },
