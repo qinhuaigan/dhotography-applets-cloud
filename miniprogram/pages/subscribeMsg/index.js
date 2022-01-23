@@ -115,7 +115,7 @@ Page({
       })
     }
   },
-  gotoDetail(e) { // 查看消息详情
+  async gotoDetail(e) { // 查看消息详情
     const {
       id,
       themeid,
@@ -123,7 +123,7 @@ Page({
       msgtype
     } = e.currentTarget.dataset
     const pageId = msgtype == 1 ? orderid : themeid
-    app.cloudFun({
+    await app.cloudFun({
       name: 'message',
       data: {
         method: 'setRead',
@@ -131,6 +131,8 @@ Page({
           id
         }
       }
+    }).then((result) => {
+      console.log('调用更新消息状态回调', result)
     })
     wx.navigateTo({
       url: `${this.data.typePageMap[msgtype]}?id=${pageId}`,

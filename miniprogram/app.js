@@ -86,8 +86,6 @@ App({
           })
         }
       }).catch((e) => {
-        console.log('option ===', option)
-        console.log('网络错误 e ===', e)
         wx.hideLoading()
         $wuxToptips().error({
           hidden: false,
@@ -190,7 +188,6 @@ App({
                 },
                 fail: function (err) {
                   wx.hideLoading()
-                  console.log('获取地理位置失败 err', err)
                   $wuxToptips().error({
                     hidden: false,
                     text: '定位失败，请检查是否打开GPS',
@@ -218,7 +215,6 @@ App({
             },
             fail: function (err) {
               wx.hideLoading()
-              console.log('获取地理位置失败 err', err)
               $wuxToptips().error({
                 hidden: false,
                 text: '定位失败，请检查是否打开GPS',

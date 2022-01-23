@@ -284,11 +284,20 @@ const Api = {
         msg
       }
     }
+
+    console.log('更新消息状态')
+
     const result = await new Promise((resolve) => {
       Message.doc(data.id).update({
         data: {
           status: 1
         }
+      })
+      .then((res) => {
+        resolve(res.stats)
+      })
+      .catch((err) => {
+        resolve(false)
       })
     })
 
