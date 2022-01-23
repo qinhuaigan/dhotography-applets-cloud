@@ -254,11 +254,11 @@ const Api = {
       })
       if (orderList) {
         // 合并数据（订单数据）
-        for (let i = 0; i < orderList.length; i++) {
-          for (let j = 0; j < result.length; j++) {
-            if (result[j].orderId === orderList[i]._id) {
-              orderList[i].createTime = formatDate(orderList[i].createTime)
-              result[j].orderInfo = orderList[i]
+        for (let i = 0; i < result.length; i++) {
+          for (let j = 0; j < orderList.length; j++) {
+            if (orderList[j]._id === result[i].orderId) {
+              orderList[j].createTime = formatDate(orderList[j].createTime)
+              result[i].orderInfo = orderList[j]
               break
             }
           }
@@ -285,20 +285,18 @@ const Api = {
       }
     }
 
-    console.log('更新消息状态')
-
     const result = await new Promise((resolve) => {
       Message.doc(data.id).update({
-        data: {
-          status: 1
-        }
-      })
-      .then((res) => {
-        resolve(res.stats)
-      })
-      .catch((err) => {
-        resolve(false)
-      })
+          data: {
+            status: 1
+          }
+        })
+        .then((res) => {
+          resolve(res.stats)
+        })
+        .catch((err) => {
+          resolve(false)
+        })
     })
 
     if (!result) {

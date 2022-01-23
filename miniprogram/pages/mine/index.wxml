@@ -1,6 +1,12 @@
 <!--pages/mine/index.wxml-->
 <!-- 消息提示 -->
 <wux-toptips id="wux-toptips" />
+<!-- 授权弹框 -->
+<wux-popup closable visible="{{ visible }}" title="提示" content="定位失败，请授权后重试！">
+  <view slot="footer" class="text-center">
+    <button class="btn" open-type="openSetting" bindtap="openAuthority">开启授权</button>
+  </view>
+</wux-popup>
 <view class="pageHead">
   <view class="avatar" bindtap="uploadAvatar">
     <wux-image mode="aspectFill" wux-class="image" error="未上传" empty="未上传" width="156rpx" height="156rpx" shape="circle" src="{{userInfo.avatar}}" />
@@ -77,11 +83,11 @@
         </navigator>
         <navigator url="../userInfo/index">
           <view class="menuItem clearfix">
-          <view class="fl">我的信息</view>
-          <view class="fr">
-            <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+            <view class="fl">我的信息</view>
+            <view class="fr">
+              <wux-icon color="#d7d7d7" size="16" type="ios-arrow-forward"></wux-icon>
+            </view>
           </view>
-        </view>
         </navigator>
       </view>
     </view>
@@ -90,7 +96,8 @@
     <view class="box">
       <view class="menuList">
         <!-- <navigator url="../mapPage/mapPage?lng=109.422046&lat=24.281037"> -->
-          <view class="menuItem clearfix" bindtap="openMap">
+        <view class="menuItem clearfix" bindtap="openMap">
+          <!-- <button open-type="openSetting">开启授权</button> -->
           <view class="fl">
             <wux-icon color="#d7d7d7" size="16" type="ios-pin"></wux-icon>
             <text class="ml5px">广西省柳州市城中区</text>

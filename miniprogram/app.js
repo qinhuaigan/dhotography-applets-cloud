@@ -163,7 +163,7 @@ App({
       })
     })
   },
-  openLocation(lng, lat) {
+  openLocation(lng, lat, page) {
     const that = this
     wx.getSetting({
       success(res) {
@@ -196,6 +196,14 @@ App({
                   })
                 }
               })
+            },
+            fail: (e) => {
+              if (page) {
+                // 用户拒绝授权，打开弹框，引导用户开启授权
+                page.setData({
+                  visible: true
+                })
+              }
             }
           })
         } else {

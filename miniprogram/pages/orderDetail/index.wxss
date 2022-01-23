@@ -50,3 +50,21 @@ page {
 .btnBox .btn:last-child {
   border-right: none;
 }
+
+.btn {
+  background-color: white;
+  justify-content: space-between;
+  border-radius: 0;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.btn::after {
+  border: none;
+  text-align: center;
+}
+
+.wux-popup__ft {
+  display: block !important;
+}

@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    visible: false,
     orderInfo: null,
     statusMap: {
       '-2': '己取消', // 客户自己取消订单
@@ -112,6 +113,11 @@ Page({
       })
       return
     }
-    app.openLocation(this.data.orderInfo.themeInfo.longitude, this.data.orderInfo.themeInfo.latitude)
-  }
+    app.openLocation(this.data.orderInfo.themeInfo.longitude, this.data.orderInfo.themeInfo.latitude, this)
+  },
+  openAuthority() {
+    this.setData({
+      visible: false
+    })
+  },
 })

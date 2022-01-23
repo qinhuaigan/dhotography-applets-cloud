@@ -5,7 +5,8 @@
     "wux-button": "../../components/wux-weapp/button/index",
     "wux-badge": "../../components/wux-weapp/badge/index",
     "wux-image": "../../components/wux-weapp/image/index",
-    "wux-toptips": "../../components/wux-weapp/toptips/index"
+    "wux-toptips": "../../components/wux-weapp/toptips/index",
+    "wux-popup": "../../components/wux-weapp/popup/index"
   },
   "navigationBarTitleText": "我的"
 }

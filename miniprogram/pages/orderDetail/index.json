@@ -9,7 +9,8 @@
     "wux-col": "../../components/wux-weapp/col/index",
     "wux-dialog": "../../components/wux-weapp/dialog/index",
     "wux-toptips": "../../components/wux-weapp/toptips/index",
-    "wux-divider": "../../components/wux-weapp/divider/index"
+    "wux-divider": "../../components/wux-weapp/divider/index",
+    "wux-popup": "../../components/wux-weapp/popup/index"
   },
   "navigationBarTitleText": "订单详情"
 }

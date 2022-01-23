@@ -2,6 +2,12 @@
 <view class="contain">
   <!-- 消息提示 -->
   <wux-toptips id="wux-toptips" />
+  <!-- 授权弹框 -->
+  <wux-popup closable visible="{{ visible }}" title="提示" content="定位失败，请授权后重试！">
+    <view slot="footer" class="text-center">
+      <button class="btn" open-type="openSetting" bindtap="openAuthority">开启授权</button>
+    </view>
+  </wux-popup>
   <view class="contentBox">
     <wux-row gutter="10">
       <wux-col span="4">
@@ -22,8 +28,7 @@
     <view class="title">订单信息</view>
     <view class="descriptionText">订单编号：{{orderInfo.customerName}}</view>
     <view class="descriptionText">下单时间：{{orderInfo.createTime}}</view>
-    <view class="descriptionText">订单状态：<text
-        class="{{statusColorMap[orderInfo.status]}}">{{statusMap[orderInfo.status]}}</text></view>
+    <view class="descriptionText">订单状态：<text class="{{statusColorMap[orderInfo.status]}}">{{statusMap[orderInfo.status]}}</text></view>
     <view class="descriptionText" wx:if="{{orderInfo.status == -2}}">客户说明：{{orderInfo.customerCancelRemarks || ''}}
     </view>
     <view class="descriptionText" wx:if="{{orderInfo.status == -1}}">商家说明：{{orderInfo.businessRemarks || ''}}</view>

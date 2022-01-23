@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    visible: false,
     defaultAvatar: null,
     userInfo: null,
     orderCount: {
@@ -143,7 +144,12 @@ Page({
     }
   },
   openMap() { // 打开地图导航
-    app.openLocation(109.422046, 24.281037)
+    app.openLocation(109.422046, 24.281037, this)
+  },
+  openAuthority() {
+    this.setData({
+      visible: false
+    })
   },
   call(e) { // 打电话
     const {

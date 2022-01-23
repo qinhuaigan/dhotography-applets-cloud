@@ -32,7 +32,7 @@ page {
 .content {
   padding: 0 50rpx;
   margin-top: -60rpx;
-  z-index: 1000;
+  z-index: 10;
   position: relative;
   min-height: 500rpx;
 }
@@ -77,6 +77,24 @@ page {
 
 .borderBottom {
   border-bottom: 1px solid #eee;
+}
+
+.btn {
+  background-color: white;
+  justify-content: space-between;
+  border-radius: 0;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.btn::after {
+  border: none;
+  text-align: center;
+}
+
+.wux-popup__ft {
+  display: block !important;
 }
 
 
