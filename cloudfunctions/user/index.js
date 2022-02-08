@@ -36,7 +36,6 @@ function checkToken(token) {
         resolve(false)
       }
     }).catch((err) => {
-      console.log(err)
     })
   })
 }
@@ -217,7 +216,6 @@ const Api = {
           }
         })
         .catch((err) => {
-          console.log(err)
         })
     })
 

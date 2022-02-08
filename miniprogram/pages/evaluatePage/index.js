@@ -126,7 +126,6 @@ Page({
           success: res => {
             app.hideLoading()
             // 返回文件 ID
-            console.log(res.fileID)
             this.data.fileList.push({
               filePath: res.fileID,
               fileName

@@ -50,7 +50,6 @@ Page({
           resolve(res.data)
         },
         fail: function (err) {
-          console.log('err', err)
           resolve(false)
         }
       })

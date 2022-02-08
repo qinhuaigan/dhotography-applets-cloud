@@ -281,10 +281,7 @@ const Api = {
             fileList: data.fileList
           }
         })
-        .then((res) => {
-          console.log(res)
-          resolve(res)
-        })
+        .then((res) => {})
         .catch((err) => {
           resolve(false)
         })

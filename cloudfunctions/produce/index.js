@@ -38,7 +38,6 @@ function checkToken(token) {
         resolve(false)
       }
     }).catch((err) => {
-      console.log(err)
     })
   })
 }

@@ -13,7 +13,7 @@ Page({
     themeDetail: null,
     lang: 'zh_CN',
     selectTime: [],
-    appointmentTime: [],
+    appointmentTime: null,
     minDate: app.formatDate(new Date()),
     phone: null,
     customerName: null,
@@ -138,8 +138,8 @@ Page({
       this.data.themeDetail.priceShow = this.data.themeDetail.price.toFixed(2)
       this.setData({
         themeDetail: this.data.themeDetail,
-        customerName: app.globalData.userInfo.chineseName,
-        phone: app.globalData.userInfo.username
+        customerName: app.globalData.userInfo.nickname,
+        phone: app.globalData.userInfo.phone
       })
       this.setData({
         themeDetail: result.data

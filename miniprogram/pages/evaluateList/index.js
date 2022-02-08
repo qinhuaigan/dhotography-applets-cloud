@@ -107,7 +107,6 @@ Page({
         wx.cloud.getTempFileURL({
           fileList: [fileId],
           success: res => {
-            console.log(res.fileList)
             resolve(res.fileList[0].tempFileURL)
           },
           fail: () => {

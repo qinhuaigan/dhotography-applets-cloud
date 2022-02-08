@@ -195,7 +195,6 @@ Page({
     const {
       id
     } = e.currentTarget.dataset
-    console.log('id ====', id)
     wx.navigateTo({
       url: `../orderDetail/index?id=${id}`,
     })

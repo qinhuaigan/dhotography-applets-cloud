@@ -44,7 +44,6 @@ Page({
                   wx.openLocation(position)
                 },
                 fail: function (err) {
-                  console.log('获取地理位置失败 err', err)
                 }
               })
             }
@@ -69,7 +68,6 @@ Page({
               wx.openLocation(position)
             },
             fail: function (err) {
-              console.log('获取地理位置失败 err', err)
             }
           })
         }

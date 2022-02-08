@@ -112,6 +112,6 @@
         <view>电话</view>
       </view>
     </view>
-    <view id="{{themeDetail._id}}" class="bottomMenuRightBtn">立即预约</view>
+    <view bindtap="gotoOrderPage" class="bottomMenuRightBtn">立即预约</view>
   </view>
 </view>

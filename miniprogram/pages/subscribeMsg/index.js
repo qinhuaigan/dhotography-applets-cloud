@@ -132,7 +132,6 @@ Page({
         }
       }
     }).then((result) => {
-      console.log('调用更新消息状态回调', result)
     })
     wx.navigateTo({
       url: `${this.data.typePageMap[msgtype]}?id=${pageId}`,

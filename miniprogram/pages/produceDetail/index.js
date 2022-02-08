@@ -126,7 +126,6 @@ Page({
         wx.cloud.getTempFileURL({
           fileList: [fileId],
           success: res => {
-            console.log(res.fileList)
             resolve(res.fileList[0].tempFileURL)
           },
           fail: () => {
@@ -177,7 +176,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: `../newOrder/index?id=${this.themeDetail._id}`
+      url: `../newOrder/index?id=${this.data.themeDetail._id}`
     })
   }
 })
