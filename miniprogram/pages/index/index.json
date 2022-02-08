@@ -3,6 +3,7 @@
     "wux-icon": "../../components/wux-weapp/icon/index",
     "wux-divider": "../../components/wux-weapp/divider/index",
     "tabBar": "../../components/custom/custom-tab-bar/index",
-    "wux-image": "../../components/wux-weapp/image/index"
+    "wux-image": "../../components/wux-weapp/image/index",
+    "wux-toptips": "../../components/wux-weapp/toptips/index"
   }
 }

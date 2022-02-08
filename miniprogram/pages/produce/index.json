@@ -3,7 +3,8 @@
     "tabBar": "../../components/custom/custom-tab-bar/index",
     "wux-tabs": "../../components/wux-weapp/tabs/index",
     "wux-tab": "../../components/wux-weapp/tab/index",
-    "wux-divider": "../../components/wux-weapp/divider/index"
+    "wux-divider": "../../components/wux-weapp/divider/index",
+    "wux-toptips": "../../components/wux-weapp/toptips/index"
   },
   "navigationBarTitleText": "预约"
 }
